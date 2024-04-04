@@ -469,3 +469,10 @@ function convertTime(time) {
   time = timeHour + ":" + timeMin + " " + timeFormat;
   return time;
 }
+
+eventsArr.push({
+  day: activeDay,
+  month: month + 1,
+  year: year,
+  events: [newEvent]
+});
