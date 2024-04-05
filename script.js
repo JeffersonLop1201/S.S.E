@@ -36,28 +36,12 @@ const months = [
   "Novembro",
   "Dezembro",
 ];
-
-// const eventsArr = [
-//   {
-//     day: 13,
-//     month: 11,
-//     year: 2022,
-//     events: [
-//       {
-//         title: "Event 1 lorem ipsun dolar sit genfa tersd dsad ",
-//         time: "10:00 AM",
-//       },
-//       {
-//         title: "Event 2",
-//         time: "11:00 AM",
-//       },
-//     ],
-//   },
-// ];
-
 const eventsArr = [];
 getEvents();
 console.log(eventsArr);
+
+// 
+
 
 //function to add days in days with class day and prev-date next-date on previous month and next month days and active on today
 function initCalendar() {
@@ -469,10 +453,3 @@ function convertTime(time) {
   time = timeHour + ":" + timeMin + " " + timeFormat;
   return time;
 }
-
-eventsArr.push({
-  day: activeDay,
-  month: month + 1,
-  year: year,
-  events: [newEvent]
-});
