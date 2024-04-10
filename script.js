@@ -13,6 +13,7 @@ const calendar = document.querySelector(".calendar"),
   addEventWrapper = document.querySelector(".add-event-wrapper "),
   addEventCloseBtn = document.querySelector(".close "),
   addEventTitle = document.querySelector(".event-name "),
+  addEventDescricao = document.querySelector(".event-descricao"),
   addEventFrom = document.querySelector(".event-time-from "),
   addEventTo = document.querySelector(".event-time-to "),
   addEventSubmit = document.querySelector(".add-event-btn ");
@@ -311,9 +312,10 @@ addEventTo.addEventListener("input", (e) => {
 //function to add event to eventsArr
 addEventSubmit.addEventListener("click", () => {
   const eventTitle = addEventTitle.value;
+  const eventDescricao = addEventDescricao.value;
   const eventTimeFrom = addEventFrom.value;
   const eventTimeTo = addEventTo.value;
-  if (eventTitle === "" || eventTimeFrom === "" || eventTimeTo === "") {
+  if (eventTitle === "" || eventDescricao === "" || eventTimeFrom === "" || eventTimeTo === "") {
     alert("Please fill all the fields");
     return;
   }
@@ -387,6 +389,7 @@ addEventSubmit.addEventListener("click", () => {
   console.log(eventsArr);
   addEventWrapper.classList.remove("active");
   addEventTitle.value = "";
+  addEventDescricao.value = "";
   addEventFrom.value = "";
   addEventTo.value = "";
   updateEvents(activeDay);
