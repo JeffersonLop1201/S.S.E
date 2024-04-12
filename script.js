@@ -462,15 +462,8 @@ document.addEventListener('DOMContentLoaded', function() {
           corEscolhida.style.backgroundColor = selectedColor;
           modal.style.display = "none";
           // Aqui você pode adicionar lógica adicional, como salvar a cor selecionada
-          localStorage.setItem('selectedColor', selectedColor);
       });
   });
-
-  // Carregar a cor selecionada anteriormente
-  const savedColor = localStorage.getItem('selectedColor');
-  if (savedColor) {
-      corEscolhida.style.backgroundColor = savedColor;
-  }
 
   // Fechar o modal quando o usuário clicar fora dele
   window.onclick = function(event) {
