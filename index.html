@@ -35,7 +35,7 @@
                         <div class="ef_traz"></div>
                         <input type="text" placeholder="00:00" class="event-time-from" />
                     </div>
-                        <div class="add-event-input time">
+                    <div class="add-event-input time">
                         <div class="ef_traz"></div>
                         <input type="text" placeholder="00:00" class="event-time-to" />
                     </div>
@@ -45,8 +45,7 @@
                     <div class="add-event-input input-cor">
                         <div class="ef_traz bt_cor"></div>
                         <div class="cor_escolhida bt_cor"></div>
-                        <input type="button" class="bt_cor"/>
-                        
+                        <input type="button" class="bt_cor" onclick="openModal()" />
                     </div>
                     <div class="add-event-input input-cont">
                         <div class="cont_conteiner">
@@ -61,26 +60,29 @@
                 <div class="ef_traz-btn"></div>
             </div>
         </div>
+
         <div id="modal" class="modal">
-    <div class="modal-content">
-        <h2>Selecione uma cor</h2>
-        <div class="color-list">
-            <div class="color-option" style="background-color: #ff0000;"><span>Red</span></div>
-            <div class="color-option" style="background-color: #00ff00;"><span>Green</span></div>
-            <div class="color-option" style="background-color: #0000ff;"><span>Blue</span></div>
-            <div class="color-option" style="background-color: #ffff00;"><span>Yellow</span></div>
-            <div class="color-option" style="background-color: #ff00ff;"><span>Magenta</span></div>
-            <div class="color-option" style="background-color: #00ffff;"><span>Cyan</span></div>
-            <!-- Adicione outras cores conforme necessário -->
+            <div class="modal-content">
+                <h2>Selecione uma cor</h2>
+                <ul class="color-list">
+             
+                    <li class="color-option" onclick="changeColor('#f74949', 'Red')"><span style="background-color: #f74949;"></span><span>Vermelho</span></li>
+                    <li class="color-option" onclick="changeColor('#FF5733', 'Orange')"><span style="background-color: #FF5733;"></span><span>Laranja</span></li>
+                    <li class="color-option" onclick="changeColor('#C70039', 'Dark Red')"><span style="background-color: #C70039;"></span><span>Vermelho Escuro</span></li>
+                    <li class="color-option" onclick="changeColor('#900C3F', 'Maroon')"><span style="background-color: #900C3F;"></span><span>Marrom</span></li>
+                    <li class="color-option" onclick="changeColor('#581845', 'Purple')"><span style="background-color: #581845;"></span><span>Roxo</span></li>
+                    <li class="color-option" onclick="changeColor('#1C2833', 'Charcoal')"><span style="background-color: #1C2833;"></span><span>Carvão</span></li>
+                    <li class="color-option" onclick="changeColor('#17202A', 'Jet Black')"><span style="background-color: #17202A;"></span><span>Preto</span></li>
+                    <li class="color-option" onclick="changeColor('#F4D03F', 'Yellow')"><span style="background-color: #F4D03F;"></span><span>Amarelo</span></li>
+                    <li class="color-option" onclick="changeColor('#2ECC71', 'Emerald')"><span style="background-color: #2ECC71;"></span><span>Esmeralda</span></li>
+                    <li class="color-option" onclick="changeColor('#3498DB', 'Peter River')"><span style="background-color: #3498DB;"></span><span>Azul</span></li>
+                    <li class="color-option" onclick="changeColor('#9B59B6', 'Amethyst')"><span style="background-color: #9B59B6;"></span><span>Amethyst</span></li>
+                    <li class="color-option" onclick="changeColor('#E74C3C', 'Alizarin')"><span style="background-color: #E74C3C;"></span><span>Alizarin</span></li>
+                    
+                </ul>
+            </div>
         </div>
-    </div>
-</div>
-
         
-
-
-
-
     </div>
 
     <div class="container">
@@ -116,13 +118,13 @@
                 <div class="event-date">12th december 2022</div>
             </div>
             <div class="events"></div>
-
             <button class="add-event">
                 <i class="fas fa-plus"></i>
-
             </button>
         </div>
-        <script src="script.js"></script>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
