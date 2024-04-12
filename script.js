@@ -446,13 +446,36 @@ function getEvents() {
   eventsArr.push(...JSON.parse(localStorage.getItem("events")));
 }
 
-function convertTime(time) {
-  //convert time to 24 hour format
-  let timeArr = time.split(":");
-  let timeHour = timeArr[0];
-  let timeMin = timeArr[1];
-  let timeFormat = timeHour >= 12 ? "PM" : "AM";
-  timeHour = timeHour % 12 || 12;
-  time = timeHour + ":" + timeMin + " " + timeFormat;
-  return time;
-}
+document.addEventListener('DOMContentLoaded', function() {
+  const corEscolhida = document.querySelector('.cor_escolhida');
+  const inputBtCor = document.querySelector('.input-cor input.bt_cor');
+  const modal = document.getElementById("modal");
+  const colorOptions = document.querySelectorAll('.color-option');
+
+  corEscolhida.addEventListener('click', function() {
+      modal.style.display = "block";
+  });
+
+  colorOptions.forEach(option => {
+      option.addEventListener('click', function() {
+          const selectedColor = this.style.backgroundColor;
+          corEscolhida.style.backgroundColor = selectedColor;
+          modal.style.display = "none";
+          // Aqui você pode adicionar lógica adicional, como salvar a cor selecionada
+          localStorage.setItem('selectedColor', selectedColor);
+      });
+  });
+
+  // Carregar a cor selecionada anteriormente
+  const savedColor = localStorage.getItem('selectedColor');
+  if (savedColor) {
+      corEscolhida.style.backgroundColor = savedColor;
+  }
+
+  // Fechar o modal quando o usuário clicar fora dele
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+});
