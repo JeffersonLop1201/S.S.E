@@ -50,7 +50,7 @@
                     <div class="add-event-input input-cont">
                         <div class="cont_conteiner">
                             <div class="ef_traz bt_cont"></div>
-                            <input type="button" class="bt_conts" />
+                            <input type="button" class="bt_conts" value="Adicionar Pessoa(s)" />
                         </div>
                     </div>
                 </div>
@@ -81,8 +81,25 @@
                     
                 </ul>
             </div>
+        </div>    
+<!-- Modal para Pesquisa de Pessoa -->
+
+
+<div id="modal_pes-pessoa" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <input type="text" id="searchInput" placeholder="Pesquisar pessoa...">
+        <div id="pessoasContainer"></div>
+        <div id="selectedUsersContainer">
+            <strong>Selecionados:</strong>
+            <ul id="selectedUsersList"></ul>
         </div>
-        
+    </div>
+</div>
+
+
+
+<!--  -->
     </div>
 
     <div class="container">

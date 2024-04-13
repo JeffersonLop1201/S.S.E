@@ -23,7 +23,7 @@ let month = today.getMonth();
 let year = today.getFullYear();
 
 const months = [
-  "January", "February", "March", "April", "May", "June", 
+  "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
 
@@ -344,27 +344,142 @@ function convertTime(time) {
   time = timeHour + ":" + timeMin + " " + timeFormat;
   return time;
 }
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const corEscolhida = document.querySelector('.cor_escolhida');
   const modal = document.getElementById("modal");
   const colorOptions = document.querySelectorAll('.color-option');
 
-  corEscolhida.addEventListener('click', function(event) {
-      event.stopPropagation();
-      modal.style.display = "block";
+  corEscolhida.addEventListener('click', function (event) {
+    event.stopPropagation();
+    modal.style.display = "block";
   });
 
   colorOptions.forEach(option => {
-      option.addEventListener('click', function() {
-          const selectedColor = this.querySelector('span:first-child').style.backgroundColor;
-          corEscolhida.style.backgroundColor = selectedColor;
-          modal.style.display = "none";
-      });
+    option.addEventListener('click', function () {
+      const selectedColor = this.querySelector('span:first-child').style.backgroundColor;
+      corEscolhida.style.backgroundColor = selectedColor;
+      modal.style.display = "none";
+    });
   });
 
-  window.addEventListener('click', function(event) {
-      if (event.target === modal) {
-          modal.style.display = "none";
-      }
+  window.addEventListener('click', function (event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
   });
 });
+const btConts = document.querySelector(".bt_conts");
+const modalPesPessoa = document.getElementById("modal_pes-pessoa");
+const closeModalPesPessoa = document.querySelector(".close-modal");
+const searchInput = document.getElementById("searchInput");
+const pessoasContainer = document.getElementById("pessoasContainer");
+const selectedUsersList = document.getElementById("selectedUsersList");
+
+// Users data
+const allUsers = [
+  { id: 1, name: "Ana Silva", icon: "👩" },
+  { id: 2, name: "Carlos Souza", icon: "👨" },
+  { id: 3, name: "Bruna Oliveira", icon: "👩" },
+  { id: 4, name: "Diego Costa", icon: "👨" },
+  { id: 5, name: "Fernanda Almeida", icon: "👩" },
+];
+
+// Selected users
+const selectedUsers = [];
+
+// Event listeners
+btConts.addEventListener("click", openModal);
+closeModalPesPessoa.addEventListener("click", closeModal);
+window.addEventListener("click", clickOutsideModal);
+searchInput.addEventListener("input", searchUsers);
+
+// Open modal
+function openModal() {
+  modalPesPessoa.style.display = "block";
+  listUsers("");
+}
+
+// Close modal
+function closeModal() {
+  modalPesPessoa.style.display = "none";
+}
+
+// Close modal when clicking outside
+function clickOutsideModal(event) {
+  if (event.target === modalPesPessoa) {
+    closeModal();
+  }
+}
+
+// Search users
+function searchUsers() {
+  const searchTerm = searchInput.value.toLowerCase();
+  listUsers(searchTerm);
+}
+
+// List users
+function listUsers(searchTerm) {
+  pessoasContainer.innerHTML = "";
+  const filteredUsers = allUsers.filter(user =>
+    user.name.toLowerCase().includes(searchTerm)
+  );
+  filteredUsers.forEach(createUserElement);
+}
+
+// Create user element
+function createUserElement(user) {
+  const userDiv = document.createElement("div");
+  userDiv.textContent = `${user.icon} ${user.name}`;
+  userDiv.classList.add("user-item");
+  userDiv.addEventListener("click", () => toggleSelectUser(user, userDiv));
+  pessoasContainer.appendChild(userDiv);
+}
+
+// Toggle select user
+function toggleSelectUser(user, divElement) {
+  const index = selectedUsers.findIndex(u => u.id === user.id);
+  if (index === -1) {
+    selectedUsers.push(user);
+    divElement.classList.add("selected");
+    addUserToSelected(user);
+    addUserToWrapper(user);
+  } else {
+    selectedUsers.splice(index, 1);
+    divElement.classList.remove("selected");
+    removeUserFromSelected(user.id);
+    removeUserFromWrapper(user.id);
+  }
+}
+
+// Add user to selected
+function addUserToSelected(user) {
+  const listItem = document.createElement("li");
+  listItem.textContent = `${user.icon} ${user.name}`;
+  listItem.id = `user-${user.id}`;
+  selectedUsersList.appendChild(listItem);
+}
+
+// Remove user from selected
+function removeUserFromSelected(userId) {
+  const listItem = document.getElementById(`user-${userId}`);
+  if (listItem) {
+    listItem.remove();
+  }
+}
+
+// Add user to wrapper
+function addUserToWrapper(user) {
+  const userDiv = document.createElement("div");
+  userDiv.textContent = `${user.icon} ${user.name}`;
+  userDiv.id = `wrapper-user-${user.id}`;
+  userDiv.classList.add("wrapper-user");
+  addEventWrapper.appendChild(userDiv);
+}
+
+// Remove user from wrapper
+function removeUserFromWrapper(userId) {
+  const userDiv = document.getElementById(`wrapper-user-${userId}`);
+  if (userDiv) {
+    userDiv.remove();
+  }
+}
