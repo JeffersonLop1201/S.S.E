@@ -376,6 +376,7 @@ const pessoasContainer = document.getElementById("pessoasContainer");
 const selectedUsersList = document.getElementById("selectedUsersList");
 
 // Users data
+// JavaScript
 const allUsers = [
   { id: 1, name: "Ana Silva", icon: "👩" },
   { id: 2, name: "Carlos Souza", icon: "👨" },
@@ -384,102 +385,124 @@ const allUsers = [
   { id: 5, name: "Fernanda Almeida", icon: "👩" },
 ];
 
-// Selected users
 const selectedUsers = [];
 
-// Event listeners
-btConts.addEventListener("click", openModal);
-closeModalPesPessoa.addEventListener("click", closeModal);
-window.addEventListener("click", clickOutsideModal);
-searchInput.addEventListener("input", searchUsers);
+document.addEventListener("DOMContentLoaded", function () {
+  const btConts = document.getElementById("bt_conts");
+  const closeModalPesPessoa = document.querySelector(".close-modal");
+  const searchInput = document.getElementById("searchInput");
+  const pessoasContainer = document.getElementById("pessoasContainer");
+  const selectedUsersList = document.getElementById("selectedUsersList");
 
-// Open modal
-function openModal() {
-  modalPesPessoa.style.display = "block";
-  listUsers("");
-}
+  btConts.addEventListener("click", openModal);
+  closeModalPesPessoa.addEventListener("click", closeModal);
+  window.addEventListener("click", clickOutsideModal);
+  searchInput.addEventListener("input", searchUsers);
 
-// Close modal
-function closeModal() {
-  modalPesPessoa.style.display = "none";
-}
-
-// Close modal when clicking outside
-function clickOutsideModal(event) {
-  if (event.target === modalPesPessoa) {
-    closeModal();
+  function openModal() {
+    modalPesPessoa.style.display = "block";
+    listUsers("");
   }
-}
 
-// Search users
-function searchUsers() {
-  const searchTerm = searchInput.value.toLowerCase();
-  listUsers(searchTerm);
-}
-
-// List users
-function listUsers(searchTerm) {
-  pessoasContainer.innerHTML = "";
-  const filteredUsers = allUsers.filter(user =>
-    user.name.toLowerCase().includes(searchTerm)
-  );
-  filteredUsers.forEach(createUserElement);
-}
-
-// Create user element
-function createUserElement(user) {
-  const userDiv = document.createElement("div");
-  userDiv.textContent = `${user.icon} ${user.name}`;
-  userDiv.classList.add("user-item");
-  userDiv.addEventListener("click", () => toggleSelectUser(user, userDiv));
-  pessoasContainer.appendChild(userDiv);
-}
-
-// Toggle select user
-function toggleSelectUser(user, divElement) {
-  const index = selectedUsers.findIndex(u => u.id === user.id);
-  if (index === -1) {
-    selectedUsers.push(user);
-    divElement.classList.add("selected");
-    addUserToSelected(user);
-    addUserToWrapper(user);
-  } else {
-    selectedUsers.splice(index, 1);
-    divElement.classList.remove("selected");
-    removeUserFromSelected(user.id);
-    removeUserFromWrapper(user.id);
+  function closeModal() {
+    modalPesPessoa.style.display = "none";
   }
-}
 
-// Add user to selected
-function addUserToSelected(user) {
-  const listItem = document.createElement("li");
-  listItem.textContent = `${user.icon} ${user.name}`;
-  listItem.id = `user-${user.id}`;
-  selectedUsersList.appendChild(listItem);
-}
-
-// Remove user from selected
-function removeUserFromSelected(userId) {
-  const listItem = document.getElementById(`user-${userId}`);
-  if (listItem) {
-    listItem.remove();
+  function clickOutsideModal(event) {
+    if (event.target === modalPesPessoa) {
+      closeModal();
+    }
   }
-}
 
-// Add user to wrapper
-function addUserToWrapper(user) {
-  const userDiv = document.createElement("div");
-  userDiv.textContent = `${user.icon} ${user.name}`;
-  userDiv.id = `wrapper-user-${user.id}`;
-  userDiv.classList.add("wrapper-user");
-  addEventWrapper.appendChild(userDiv);
-}
-
-// Remove user from wrapper
-function removeUserFromWrapper(userId) {
-  const userDiv = document.getElementById(`wrapper-user-${userId}`);
-  if (userDiv) {
-    userDiv.remove();
+  function searchUsers() {
+    const searchTerm = searchInput.value.toLowerCase();
+    listUsers(searchTerm);
   }
-}
+
+  function listUsers(searchTerm) {
+    pessoasContainer.innerHTML = "";
+    const filteredUsers = allUsers.filter(user =>
+      user.name.toLowerCase().includes(searchTerm)
+    );
+    filteredUsers.forEach(createUserElement);
+  }
+
+  function createUserElement(user) {
+    const userDiv = document.createElement("div");
+    userDiv.textContent = `${user.icon} ${user.name}`;
+    userDiv.classList.add("user-item");
+    userDiv.addEventListener("click", () => toggleSelectUser(user, userDiv));
+    pessoasContainer.appendChild(userDiv);
+  }
+
+  function toggleSelectUser(user, divElement) {
+    const index = selectedUsers.findIndex(u => u.id === user.id);
+    if (index === -1) {
+      selectedUsers.push(user);
+      divElement.classList.add("selected");
+      addUserToSelected(user);
+      addUserToWrapper(user);
+    } else {
+      selectedUsers.splice(index, 1);
+      divElement.classList.remove("selected");
+      removeUserFromSelected(user.id);
+      removeUserFromWrapper(user.id);
+    }
+  }
+
+  function addUserToSelected(user) {
+    const listItem = document.createElement("li");
+    listItem.textContent = `${user.icon} ${user.name}`;
+    listItem.id = `user-${user.id}`;
+    selectedUsersList.appendChild(listItem);
+  }
+
+  function removeUserFromSelected(userId) {
+    const listItem = document.getElementById(`user-${userId}`);
+    if (listItem) {
+      listItem.remove();
+    }
+  }
+
+  function addUserToWrapper(user) {
+    const userDiv = document.createElement("div");
+    userDiv.innerHTML = `<span class="user-icon">${user.icon}</span> ${user.name} <span class="remove-user"></span>`;
+    userDiv.id = `wrapper-user-${user.id}`;
+    userDiv.classList.add("wrapper-user");
+    userDiv.addEventListener("click", () => showRemoveConfirmation(user, userDiv));
+    const selectedUsersContainer = document.getElementById("selectedUsersContainer");
+    selectedUsersContainer.appendChild(userDiv);
+  }
+
+  function removeUserFromWrapper(userId) {
+    const userDiv = document.getElementById(`wrapper-user-${userId}`);
+    if (userDiv) {
+      userDiv.remove();
+    }
+  }
+
+  function showRemoveConfirmation(user, userDiv) {
+    const confirmDelete = document.createElement("div");
+    confirmDelete.className = "confirm-delete";
+    confirmDelete.innerHTML = `
+      <div class="confirm-delete-box">
+        <p>Do you want to remove ${user.name}?</p>
+        <button class="delete-yes">Yes</button>
+        <button class="delete-no">No</button>
+      </div>
+    `;
+    document.body.appendChild(confirmDelete);
+    const deleteYes = confirmDelete.querySelector(".delete-yes");
+    const deleteNo = confirmDelete.querySelector(".delete-no");
+
+    deleteYes.addEventListener("click", function () {
+      userDiv.remove();
+      confirmDelete.remove();
+      toggleSelectUser(user, userDiv);
+    });
+
+    deleteNo.addEventListener("click", function () {
+      confirmDelete.remove();
+    });
+  }
+});

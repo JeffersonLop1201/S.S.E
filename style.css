@@ -565,26 +565,40 @@ body {
 
 .cont_conteiner{
   width: 100%;
-  min-height: 60px;
-  position: relative;
+  max-width: 60px;
+  min-height: 70px;
+  position: absolute;
   transition: 0.5s ease linear;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding-left: 10px;
+  justify-content: center;
+  margin-right: 20px;
+  left: 10px;
 }
 .bt_cont{
-  max-width: 40px;
-  height: 50px;
+  max-width: 50px;
+  max-height: 50px;
   z-index: 1000;
-
+  position: relative;
+  top: -2px;
 }
 .bt_conts{
-  max-width: 40px;
-  height: 50px;
+  max-width: 50px;
+  max-height: 50px;
   z-index: 1000;
-
+  position: relative;
+  top: -4.70px;
 }
+
+.cont_conteiner .ef_traz{
+  width: 100%;
+  position: relative;
+  height: 100%;
+  background-color: #95877A;
+  border-radius: 7px;
+  margin-top: 33px;
+}
+
 .add-event-body .add-event-input {
   width: 100%;
   min-height: 40px;
@@ -596,6 +610,23 @@ body {
   margin-bottom: 30px;
   position: relative;
   transition: 0.5s ease linear;
+}
+#bt_conts{
+  border: 3px solid #95877A;
+  padding: 5px;
+}
+.cont-user-geral{
+  background-color: #E4D5C7;
+  min-width: 100%;
+  height: 75px;
+  margin-top: -50px;
+  border-radius: 10px;
+  padding-left: 10px;
+  border: 3px solid #95877A;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
 }
 .time{
   width: 100px;
@@ -816,119 +847,162 @@ body {
 .pessoa-item.selected {
   background-color: #e0e0e0;
 }
+.bt_conts, .selected-users-container {
+  margin: 10px;
+}
+.selected-users-container::-webkit-scrollbar {
+  display: none;     
+}
+
+.input-cont{
+  width: 90% !important;
+}
+.selected-users-container {
+  display: flex;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow-x: auto;          /* Ativa o scroll horizontal */
+  overflow-y: hidden;        /* Esconde o scroll vertical */
+  max-height: 70px;
+  -webkit-overflow-scrolling: touch; /* Adiciona suavidade ao scroll no iOS */
+  scroll-snap-type: x mandatory; /* Permite o snap durante o scroll horizontal */
+  scroll-behavior: smooth;   /* Adiciona suavidade ao scroll */
+
+  margin-left: 70px;
+  max-width: 100%;
+  
+}
+
+/* Estilos para cada usuário dentro do container */
+
+
 .wrapper-user {
-  /* Add your styles for the user div in the wrapper here */
+  display: inline-flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 5px 5px;
+  border-radius: 15px;
+  margin-right: 10px;
+  white-space: nowrap;      /* Impede que o texto quebre */
+  flex-shrink: 0;           /* Impede que o item diminua */
+  scroll-snap-align: start; /* Alinha os itens ao início do scroll */
+  height: 50px;
+  position: relative;     cursor: pointer;
+  /* Para posicionar os pseudo-elementos */
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* media queries */
-
-@media screen and (max-width: 1000px) {
-  body {
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-
-  .container {
-    min-height: 100vh;
-    flex-direction: column;
-    border-radius: 0;
-  }
-
-  .container .left {
-    width: 100%;
-    height: 100%;
-    padding: 20px 0;
-  }
-
-  .container .right {
-    width: 100%;
-    height: 500px;
-    padding: 20px 0;
-    background-color: blue;
-  }
-
-  .calendar::before,
-  .calendar::after {
-    top: 100%;
-    left: 50%;
-    width: 97%;
-    height: 12px;
-    border-radius: 0 0 5px 5px;
-    transform: translateX(-50%);
-  }
-
-  .calendar::before {
-    width: 94%;
-    top: calc(100% + 12px);
-  }
-
-  .events {
-    padding-bottom: 340px;
-  }
-
-  .add-event-wrapper {
-    bottom: 100px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .calendar .month {
-    height: 75px;
-  }
-
-  .calendar .weekdays {
-    height: 50px;
-  }
-
-  .calendar .days .day {
-    height: 40px;
-    font-size: 0.8rem;
-  }
-
-  .calendar .days .day.active,
-  .calendar .days .day.today {
-    font-size: 1rem;
-  }
-
-  .right .today-date {
-    padding: 20px;
-  }
-}
-
-.credits {
+/* Pseudo-elemento ::before */
+.wrapper-user::before {
+  content: '';
   position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-color: rgba(240, 240, 240, 0.7);
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0; /* Inicialmente invisível */  cursor: pointer;
+
+}
+
+/* Pseudo-elemento ::after */
+.wrapper-user::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-color: rgba(240, 240, 240, 0.5);
   bottom: 0;
+  right: 0;
+  z-index: -2;
+  transition: opacity 0.3s ease;
+  opacity: 0; /* Inicialmente invisível */
+  cursor: pointer;
+
+}
+
+/* Quando o mouse passa sobre o .wrapper-user */
+.wrapper-user:hover::before,
+.wrapper-user:hover::after {
+  opacity: 1; /* Torna os pseudo-elementos visíveis */
+}
+
+
+.user-icon {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 15px; /* Transforma o ícone em um círculo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ccc; /* Cor de fundo para o ícone */
+  flex-shrink: 0;
+  cursor: pointer;
+
+}
+
+.remove-user {
+  cursor: pointer;
+  margin-left: 10px;
+  color: #333; /* Cor do ícone de remoção */
+  transition: color 0.3s ease; /* Transição suave para a mudança de cor do ícone */
+  cursor: pointer;
+
+}
+
+.confirm-delete {
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000000000000000000000000000;
+}
+
+.confirm-delete-box {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   text-align: center;
-  padding: 10px;
-  font-size: 12px;
-  color: #fff;
-  background-color: #b38add;
+  width: 300px;
 }
 
-.credits a {
-  text-decoration: none;
-  font-weight: 600;
+.confirm-delete-box p {
+  margin-bottom: 20px;
 }
 
-.credits a:hover {
-  text-decoration: underline;
+.confirm-delete-box button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-delete-box button.delete-yes {
+  background-color: #e74c3c;
+  color: #ffffff;
+}
+
+.confirm-delete-box button.delete-yes:hover {
+  background-color: #c0392b;
+}
+
+.confirm-delete-box button.delete-no {
+  background-color: #3498db;
+  color: #ffffff;
+}
+
+.confirm-delete-box button.delete-no:hover {
+  background-color: #2980b9;
 }
