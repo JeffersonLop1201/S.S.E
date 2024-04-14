@@ -787,6 +787,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .add-event-footer .add-event-btn:hover {
@@ -867,10 +868,8 @@ body {
   -webkit-overflow-scrolling: touch; /* Adiciona suavidade ao scroll no iOS */
   scroll-snap-type: x mandatory; /* Permite o snap durante o scroll horizontal */
   scroll-behavior: smooth;   /* Adiciona suavidade ao scroll */
-
   margin-left: 70px;
   max-width: 100%;
-  
 }
 
 /* Estilos para cada usuário dentro do container */
@@ -953,7 +952,6 @@ body {
   cursor: pointer;
 
 }
-
 .confirm-delete {
   position: fixed;
   top: 0;
@@ -964,7 +962,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000000000000000000000000000;
+  z-index: 1000000000000000000000000000; /* z-index alto para garantir que fique sobreposto */
 }
 
 .confirm-delete-box {
@@ -973,7 +971,7 @@ body {
   padding: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   text-align: center;
-  width: 300px;
+  width: 300px; /* Largura do modal */
 }
 
 .confirm-delete-box p {
@@ -1005,4 +1003,74 @@ body {
 
 .confirm-delete-box button.delete-no:hover {
   background-color: #2980b9;
+}
+
+.mod-pess{
+  max-height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mod-pess-cont{
+  border: none;
+  width: 30vw !important;
+  min-height: 80vh;
+  max-height: 80vh;
+  padding: 50px 30px;
+}
+.mod-pess-close{
+  background-color: #E4D5C7;
+  float: none;
+  height: 50px;
+  width: 50px;
+  border: 3px solid #95877A;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.mod-pess-cont-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 60px;
+}
+.mod-pess-input{
+  background-color: #E4D5C7;
+  height: 50px;
+  border: 3px solid #95877A;
+  border-radius: 30px;
+  padding:0px 20px ;
+  width: 80%;
+}
+.mod-pess-card{
+  background-color: #E4D5C7;
+  border: none;
+  border-radius: 15px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+.mod-pess-user-cont{
+  background-color: #E4D5C7;
+  border: 3px solid #95877A;
+}
+.mod-pess-user-unit{
+  background-color: #E4D5C7;
+  border: 3px solid #95877A;
+  width: auto;
+  height: 50px;
+  border-radius: 15px;
+  margin: 15px;
+  padding: 10px 20px ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
