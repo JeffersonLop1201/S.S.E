@@ -15,6 +15,7 @@ const calendar = document.querySelector(".calendar"),
   addEventTitle = document.querySelector(".event-name"),
   addEventFrom = document.querySelector(".event-time-from"),
   addEventTo = document.querySelector(".event-time-to"),
+  addEventDescricion = document.querySelector('.event-descricao'),
   addEventSubmit = document.querySelector(".add-event-btn");
 
 let today = new Date();
@@ -208,7 +209,6 @@ function updateEvents(date) {
       event.events.forEach((event) => {
         events += `<div class="event">
             <div class="title">
-              <i class="fas fa-circle"></i>
               <h3 class="event-title">${event.title}</h3>
             </div>
             <div class="event-time">
@@ -234,7 +234,6 @@ addEventBtn.addEventListener("click", () => {
 addEventCloseBtn.addEventListener("click", () => {
   addEventWrapper.classList.remove("active");
 });
-
 
 addEventTitle.addEventListener("input", (e) => {
   addEventTitle.value = addEventTitle.value.slice(0, 60);
@@ -262,14 +261,16 @@ addEventTo.addEventListener("input", (e) => {
 
 addEventSubmit.addEventListener("click", () => {
   const eventTitle = addEventTitle.value;
+  const eventDescricion = addEventDescricion.value;
   const eventTimeFrom = addEventFrom.value;
   const eventTimeTo = addEventTo.value;
-  if (eventTitle === "" || eventTimeFrom === "" || eventTimeTo === "") {
+  const selectedColor = getColor();
+  const selectedUsers = getSelectedUsers();
+
+  if (eventTitle === "" || eventTimeFrom === "" || eventTimeTo === "" || eventDescricion === "") {
     alert("Please fill all the fields");
     return;
   }
-  const timeFrom = convertTime(eventTimeFrom);
-  const timeTo = convertTime(eventTimeTo);
 
   let eventAdded = false;
   if (eventsArr.length > 0) {
@@ -279,7 +280,13 @@ addEventSubmit.addEventListener("click", () => {
         item.month === month + 1 &&
         item.year === year
       ) {
-        item.events.push({ title: eventTitle, time: timeFrom + " - " + timeTo });
+        item.events.push({ 
+          title: eventTitle,
+          descrição: eventDescricion,
+          time: `${eventTimeFrom} - ${eventTimeTo}`,
+          color: selectedColor,
+          users: selectedUsers
+        });
         eventAdded = true;
       }
     });
@@ -290,15 +297,34 @@ addEventSubmit.addEventListener("click", () => {
       day: activeDay,
       month: month + 1,
       year: year,
-      events: [{ title: eventTitle, time: timeFrom + " - " + timeTo }],
+      events: [{ 
+        title: eventTitle,
+        descrição: eventDescricion,
+        time: `${eventTimeFrom} - ${eventTimeTo}`,
+        color: selectedColor,
+        users: selectedUsers
+      }],
     });
   }
 
+  saveEvents();
+  saveColor(selectedColor);
+  saveSelectedUsers();
+
   addEventWrapper.classList.remove("active");
+  addEventDescricion.value = "";
   addEventTitle.value = "";
   addEventFrom.value = "";
   addEventTo.value = "";
   updateEvents(activeDay);
+
+  showEventModal({
+    title: eventTitle,
+    descrição: eventDescricion,
+    time: `${eventTimeFrom} - ${eventTimeTo}`,
+    color: selectedColor,
+    users: selectedUsers
+  });
 });
 
 eventsContainer.addEventListener("click", (e) => {
@@ -333,6 +359,48 @@ function getEvents() {
     return;
   }
   eventsArr.push(...JSON.parse(localStorage.getItem("events")));
+}
+
+function saveColor(color) {
+  localStorage.setItem("selectedColor", color);
+}
+
+function getColor() {
+  return localStorage.getItem("selectedColor") || "#ffffff"; // retorna branco se não houver cor salva
+}
+
+function saveSelectedUsers() {
+  localStorage.setItem("selectedUsers", JSON.stringify(selectedUsers));
+}
+
+function getSelectedUsers() {
+  return JSON.parse(localStorage.getItem("selectedUsers")) || [];
+}
+
+function showEventModal(event) {
+  const modalContent = `
+    <div class="event-modal-content">
+      <h2>${event.title}</h2>
+      <p><strong>Descrição:</strong> ${event.descrição}</p>
+      <p><strong>Tempo:</strong> ${event.time}</p>
+      <p><strong>Cor:</strong> ${event.color}</p>
+      <p><strong>Usuários:</strong> ${event.users.map(user => user.name).join(", ")}</p>
+    </div>
+  `;
+
+  const modal = document.createElement("div");
+  modal.className = "event-modal";
+  modal.innerHTML = modalContent;
+
+  document.body.appendChild(modal);
+
+  const closeModalBtn = document.createElement("button");
+  closeModalBtn.textContent = "Fechar";
+  closeModalBtn.addEventListener("click", () => {
+    modal.remove();
+  });
+
+  modal.appendChild(closeModalBtn);
 }
 
 function convertTime(time) {
@@ -382,6 +450,13 @@ const allUsers = [
   { id: 3, name: "Bruna Oliveira", icon: "👩" },
   { id: 4, name: "Diego Costa", icon: "👨" },
   { id: 5, name: "Fernanda Almeida", icon: "👩" },
+  { id: 6, name: "Fernanda Goias", icon: "👩" },
+  { id: 7, name: "Ana Silva", icon: "👩" },
+  { id: 8, name: "Carlos Souza", icon: "👨" },
+  { id: 9, name: "Bruna Oliveira", icon: "👩" },
+  { id: 10, name: "Diego Costa", icon: "👨" },
+  { id: 11, name: "Fernanda Almeida", icon: "👩" },
+  { id: 12, name: "Fernanda Goias", icon: "👩" },
 ];
 
 // Selected users
@@ -454,9 +529,10 @@ function toggleSelectUser(user, divElement) {
 
 // Add user to selected
 function addUserToSelected(user) {
-  const listItem = document.createElement("li");
+  const listItem = document.createElement("div");
   listItem.textContent = `${user.icon} ${user.name}`;
   listItem.id = `user-${user.id}`;
+  listItem.className = `mod-pess-unic-pess`;
   selectedUsersList.appendChild(listItem);
 }
 

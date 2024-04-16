@@ -557,6 +557,7 @@ body {
   clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%);
   width: 120% !important;
   height: 120% !important;
+  border: none !important;
 }
 .add-event-input.time{
   width: 120px !important;
@@ -616,8 +617,8 @@ body {
   padding: 5px;
 }
 .cont-user-geral{
-  background-color: #E4D5C7;
   min-width: 100%;
+  background-color: #e0e0e0;
   height: 75px;
   margin-top: -50px;
   border-radius: 10px;
@@ -636,7 +637,8 @@ body {
   height: 100%;
   outline: none;
   border: none;
-  border-bottom: 1px solid #E4D5C7;
+  border: 3px solid #95877A;
+  background-color: #e0e0e0;
   padding: 0 20px;
   font-size: 1.3rem;
   font-weight: 400;
@@ -648,17 +650,20 @@ body {
   font-weight: 700;
   cursor: pointer;
 }
+
 .add-event-body .add-event-input input.event-time-to{
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 10px 2px;
 }
 .add-event-body .add-event-input input.event-time-from{
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 10px 2px;
 }
 .add-event-body .add-event-input input::placeholder{
   color: rgba(148, 135, 122, 0.5);
@@ -833,7 +838,7 @@ body {
   cursor: pointer;
 }
 #pessoasContainer {
-  max-height: 200px;
+  max-height: 350px;
   overflow-y: auto;
   border: 1px solid #ccc;
   margin-top: 10px;
@@ -852,7 +857,7 @@ body {
   margin: 10px;
 }
 .selected-users-container::-webkit-scrollbar {
-  display: none;     
+  height: 6px;    
 }
 
 .input-cont{
@@ -1019,6 +1024,9 @@ body {
   min-height: 80vh;
   max-height: 80vh;
   padding: 50px 30px;
+  background-color: var(--primary-clr);
+  position: relative;
+  overflow: hidden;
 }
 .mod-pess-close{
   background-color: #E4D5C7;
@@ -1054,12 +1062,21 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   margin-bottom: 50px;
+  min-height: auto;
 }
 .mod-pess-user-cont{
   background-color: #E4D5C7;
-  border: 3px solid #95877A;
+  display: flex;
+  border-radius: 15px;
+  align-items: center;
+  max-height: 200px;
+  
+  flex-direction: column;
+  width: 100%;
+  justify-content: start;
 }
 .mod-pess-user-unit{
   background-color: #E4D5C7;
@@ -1073,4 +1090,48 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+.mod-pess-strong{
+  padding-top: 15px;
+  float: left;
+  position: relative;
+  left: 0;
+  padding-bottom: 10px;
+}
+
+.mod-pess-card::-webkit-scrollbar {
+  display: none;
+}
+.mod-pess-unic-pess{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+  margin: 10px 2px;
+  height: 35px;
+  width: 90%;
+  border-bottom: 3px solid #174738;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.mod-pess-user-cont::-webkit-scrollbar {
+  display: none;
+}
+.mod-pess-list{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  overflow-y: auto;          /* Ativa o scroll horizontal */
+  overflow-x: hidden;    
+  -webkit-overflow-scrolling: touch; /* Adiciona suavidade ao scroll no iOS */
+  scroll-snap-type: mandatory; 
+  scroll-behavior: smooth; 
+  padding-top: 10px;
+
+}
+.mod-pess-list::-webkit-scrollbar {
+  display: none;
 }
