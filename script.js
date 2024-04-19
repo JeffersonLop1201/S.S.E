@@ -1,36 +1,40 @@
+// constantes geral
 const calendar = document.querySelector(".calendar"),
-  date = document.querySelector(".date"),
-  daysContainer = document.querySelector(".days"),
-  prev = document.querySelector(".prev"),
-  next = document.querySelector(".next"),
-  todayBtn = document.querySelector(".today-btn"),
-  gotoBtn = document.querySelector(".goto-btn"),
-  dateInput = document.querySelector(".date-input"),
-  eventDay = document.querySelector(".event-day"),
-  eventDate = document.querySelector(".event-date"),
-  eventsContainer = document.querySelector(".events"),
-  addEventBtn = document.querySelector(".add-event"),
-  addEventWrapper = document.querySelector(".add-event-wrapper"),
-  addEventCloseBtn = document.querySelector(".close"),
-  addEventTitle = document.querySelector(".event-name"),
-  addEventFrom = document.querySelector(".event-time-from"),
-  addEventTo = document.querySelector(".event-time-to"),
-  addEventDescricion = document.querySelector('.event-descricao'),
-  addEventSubmit = document.querySelector(".add-event-btn");
+      date = document.querySelector(".date"),
+      daysContainer = document.querySelector(".days"),
+      prev = document.querySelector(".prev"),
+      next = document.querySelector(".next"),
+      todayBtn = document.querySelector(".today-btn"),
+      gotoBtn = document.querySelector(".goto-btn"),
+      dateInput = document.querySelector(".date-input"),
+      eventDay = document.querySelector(".event-day"),
+      eventDate = document.querySelector(".event-date"),
+      eventsContainer = document.querySelector(".events"),
+      addEventBtn = document.querySelector(".add-event"),
+      addEventWrapper = document.querySelector(".add-event-wrapper"),
+      addEventCloseBtn = document.querySelector(".close"),
+      addEventTitle = document.querySelector(".event-name"),
+      addEventFrom = document.querySelector(".event-time-from"),
+      addEventTo = document.querySelector(".event-time-to"),
+      addEventDescricion = document.querySelector('.event-descricao'),
+      addEventSubmit = document.querySelector(".add-event-btn");
+
+
+const months = [
+  "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+  "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+];
+
+const eventsArr = [];
+getEvents();
 
 let today = new Date();
 let activeDay;
 let month = today.getMonth();
 let year = today.getFullYear();
 
-const months = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
-
-const eventsArr = [];
-getEvents();
-
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para inicializar o calendário
 function initCalendar() {
   const firstDay = new Date(year, month, 1);
   const lastDay = new Date(year, month + 1, 0);
@@ -88,6 +92,9 @@ function initCalendar() {
   addListner();
 }
 
+
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para ir para o mês anterior
 function prevMonth() {
   month--;
   if (month < 0) {
@@ -96,7 +103,8 @@ function prevMonth() {
   }
   initCalendar();
 }
-
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para ir para o próximo mês
 function nextMonth() {
   month++;
   if (month > 11) {
@@ -111,6 +119,8 @@ next.addEventListener("click", nextMonth);
 
 initCalendar();
 
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para adicionar ouvintes de evento aos dias do calendário
 function addListner() {
   const days = document.querySelectorAll(".day");
   days.forEach((day) => {
@@ -178,6 +188,8 @@ dateInput.addEventListener("input", (e) => {
 
 gotoBtn.addEventListener("click", gotoDate);
 
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para ir para uma data específica
 function gotoDate() {
   const dateArr = dateInput.value.split("/");
   if (dateArr.length === 2) {
@@ -191,13 +203,16 @@ function gotoDate() {
   alert("Invalid Date");
 }
 
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para obter o dia ativo
 function getActiveDay(date) {
   const day = new Date(year, month, date);
   const dayName = day.toString().split(" ")[0];
   eventDay.innerHTML = dayName;
   eventDate.innerHTML = date + " " + months[month] + " " + year;
 }
-
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para atualizar os eventos exibidos
 function updateEvents(date) {
   let events = "";
   eventsArr.forEach((event) => {
@@ -280,7 +295,7 @@ addEventSubmit.addEventListener("click", () => {
         item.month === month + 1 &&
         item.year === year
       ) {
-        item.events.push({ 
+        item.events.push({
           title: eventTitle,
           descrição: eventDescricion,
           time: `${eventTimeFrom} - ${eventTimeTo}`,
@@ -297,7 +312,7 @@ addEventSubmit.addEventListener("click", () => {
       day: activeDay,
       month: month + 1,
       year: year,
-      events: [{ 
+      events: [{
         title: eventTitle,
         descrição: eventDescricion,
         time: `${eventTimeFrom} - ${eventTimeTo}`,
@@ -567,7 +582,7 @@ function addUserToWrapper(user) {
   userDiv.innerHTML = `<span class="user-icon">${user.icon}</span> ${user.name} <span class="remove-user"></span>`;
   userDiv.id = `wrapper-user-${user.id}`;
   userDiv.classList.add("wrapper-user");
-  
+
   // Adiciona evento para remover usuário ao clicar no "×"
   userDiv.querySelector(".remove-user").addEventListener("click", () => {
     toggleSelectUser(user, userDiv);  // Remove o usuário da seleção
@@ -601,7 +616,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <button class="delete-yes">Yes</button>
         <button class="delete-no">No</button>
       `;
-      
+
       document.body.appendChild(confirmDelete);
 
       const deleteYes = confirmDelete.querySelector(".delete-yes");
@@ -625,7 +640,7 @@ function addUserToWrapper(user) {
   userDiv.innerHTML = `<span class="user-icon">${user.icon}</span> ${user.name} <span class="remove-user"></span>`;
   userDiv.id = `wrapper-user-${user.id}`;
   userDiv.classList.add("wrapper-user");
-  
+
   // Adiciona evento para mostrar aviso ao clicar no usuário
   userDiv.addEventListener("click", () => {
     showRemoveConfirmation(user, userDiv);  // Mostra o aviso de remoção
