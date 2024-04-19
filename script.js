@@ -1,33 +1,38 @@
-// constantes geral
+// Constantes para os elementos HTML
 const calendar = document.querySelector(".calendar"),
-      date = document.querySelector(".date"),
-      daysContainer = document.querySelector(".days"),
-      prev = document.querySelector(".prev"),
-      next = document.querySelector(".next"),
-      todayBtn = document.querySelector(".today-btn"),
-      gotoBtn = document.querySelector(".goto-btn"),
-      dateInput = document.querySelector(".date-input"),
-      eventDay = document.querySelector(".event-day"),
-      eventDate = document.querySelector(".event-date"),
-      eventsContainer = document.querySelector(".events"),
-      addEventBtn = document.querySelector(".add-event"),
-      addEventWrapper = document.querySelector(".add-event-wrapper"),
-      addEventCloseBtn = document.querySelector(".close"),
-      addEventTitle = document.querySelector(".event-name"),
-      addEventFrom = document.querySelector(".event-time-from"),
-      addEventTo = document.querySelector(".event-time-to"),
-      addEventDescricion = document.querySelector('.event-descricao'),
-      addEventSubmit = document.querySelector(".add-event-btn");
-
-
+  date = document.querySelector(".date"),
+  daysContainer = document.querySelector(".days"),
+  prev = document.querySelector(".prev"),
+  next = document.querySelector(".next"),
+  todayBtn = document.querySelector(".today-btn"),
+  gotoBtn = document.querySelector(".goto-btn"),
+  dateInput = document.querySelector(".date-input"),
+  eventDay = document.querySelector(".event-day"),
+  eventDate = document.querySelector(".event-date"),
+  eventsContainer = document.querySelector(".events"),
+  addEventBtn = document.querySelector(".add-event"),
+  addEventWrapper = document.querySelector(".add-event-wrapper"),
+  addEventCloseBtn = document.querySelector(".close"),
+  addEventTitle = document.querySelector(".event-name"),
+  addEventFrom = document.querySelector(".event-time-from"),
+  addEventTo = document.querySelector(".event-time-to"),
+  addEventDescricion = document.querySelector('.event-descricao'),
+  addEventSubmit = document.querySelector(".add-event-btn");
+// Lista de usuários selecionados
+const selectedUsers = [];
+// Array com os nomes dos meses
 const months = [
   "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
   "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
 ];
 
+// Array para armazenar eventos
 const eventsArr = [];
+
+// Carrega eventos do armazenamento local
 getEvents();
 
+// Variáveis para armazenar a data atual e o mês e ano atuais
 let today = new Date();
 let activeDay;
 let month = today.getMonth();
@@ -92,7 +97,6 @@ function initCalendar() {
   addListner();
 }
 
-
 //-----------------------------------------------------------------------------------------------------------------------------------//
 // Função para ir para o mês anterior
 function prevMonth() {
@@ -103,6 +107,7 @@ function prevMonth() {
   }
   initCalendar();
 }
+
 //-----------------------------------------------------------------------------------------------------------------------------------//
 // Função para ir para o próximo mês
 function nextMonth() {
@@ -114,9 +119,11 @@ function nextMonth() {
   initCalendar();
 }
 
+// Adiciona eventos aos botões de mês anterior e próximo
 prev.addEventListener("click", prevMonth);
 next.addEventListener("click", nextMonth);
 
+// Inicializa o calendário ao carregar a página
 initCalendar();
 
 //-----------------------------------------------------------------------------------------------------------------------------------//
@@ -164,6 +171,10 @@ function addListner() {
   });
 }
 
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para ir para a data atual
+
+// Adiciona evento ao botão "Hoje"
 todayBtn.addEventListener("click", () => {
   today = new Date();
   month = today.getMonth();
@@ -171,6 +182,7 @@ todayBtn.addEventListener("click", () => {
   initCalendar();
 });
 
+// Adiciona evento ao campo de entrada de data
 dateInput.addEventListener("input", (e) => {
   dateInput.value = dateInput.value.replace(/[^0-9/]/g, "");
   if (dateInput.value.length === 2) {
@@ -186,6 +198,7 @@ dateInput.addEventListener("input", (e) => {
   }
 });
 
+// Adiciona evento ao botão "Ir para a data"
 gotoBtn.addEventListener("click", gotoDate);
 
 //-----------------------------------------------------------------------------------------------------------------------------------//
@@ -211,6 +224,7 @@ function getActiveDay(date) {
   eventDay.innerHTML = dayName;
   eventDate.innerHTML = date + " " + months[month] + " " + year;
 }
+
 //-----------------------------------------------------------------------------------------------------------------------------------//
 // Função para atualizar os eventos exibidos
 function updateEvents(date) {
@@ -242,18 +256,57 @@ function updateEvents(date) {
   saveEvents();
 }
 
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para salvar os eventos no armazenamento local
+function saveEvents() {
+  localStorage.setItem("events", JSON.stringify(eventsArr));
+}
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para obter os eventos do armazenamento local
+function getEvents() {
+  if (localStorage.getItem("events") === null) {
+    return;
+  }
+  eventsArr.push(...JSON.parse(localStorage.getItem("events")));
+}
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para salvar a cor selecionada
+function saveColor(color) {
+  localStorage.setItem("selectedColor", color);
+}
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para obter a cor selecionada
+function getColor() {
+  return localStorage.getItem("selectedColor") || "#ffffff";
+}
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para salvar os usuários selecionados
+function saveSelectedUsers(SelectedUsers) {
+  localStorage.setItem("selectedUsers", JSON.stringify(SelectedUsers));
+}
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para obter os usuários selecionados
+function getSelectedUsers() {
+  return JSON.parse(localStorage.getItem("selectedUsers")) || [];
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Adiciona evento ao botão de adicionar evento
 addEventBtn.addEventListener("click", () => {
   addEventWrapper.classList.toggle("active");
 });
-
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Adiciona evento ao botão de fechar adição de evento
 addEventCloseBtn.addEventListener("click", () => {
   addEventWrapper.classList.remove("active");
 });
-
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Limita a quantidade de caracteres do titulo
 addEventTitle.addEventListener("input", (e) => {
   addEventTitle.value = addEventTitle.value.slice(0, 60);
 });
-
+//-----------------------------------------------------------------------------------------------------------------------------------//
+//deixa o botão de tempo com o formato certo : 00:00
 addEventFrom.addEventListener("input", (e) => {
   addEventFrom.value = addEventFrom.value.replace(/[^0-9:]/g, "");
   if (addEventFrom.value.length === 2) {
@@ -273,14 +326,15 @@ addEventTo.addEventListener("input", (e) => {
     addEventTo.value = addEventTo.value.slice(0, 5);
   }
 });
-
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Adiciona evento ao botão de envio de evento
 addEventSubmit.addEventListener("click", () => {
   const eventTitle = addEventTitle.value;
   const eventDescricion = addEventDescricion.value;
   const eventTimeFrom = addEventFrom.value;
   const eventTimeTo = addEventTo.value;
-  const selectedColor = getColor();
-  const selectedUsers = getSelectedUsers();
+  const SelectedColor = getColor();
+  const SelectedUsers = getSelectedUsers();
 
   if (eventTitle === "" || eventTimeFrom === "" || eventTimeTo === "" || eventDescricion === "") {
     alert("Please fill all the fields");
@@ -299,8 +353,8 @@ addEventSubmit.addEventListener("click", () => {
           title: eventTitle,
           descrição: eventDescricion,
           time: `${eventTimeFrom} - ${eventTimeTo}`,
-          color: selectedColor,
-          users: selectedUsers
+          color: SelectedColor,
+          users: SelectedUsers
         });
         eventAdded = true;
       }
@@ -308,7 +362,9 @@ addEventSubmit.addEventListener("click", () => {
   }
 
   if (!eventAdded) {
+    const eventId = Date.now(); // Gera um ID único baseado no timestamp
     eventsArr.push({
+      id: eventId, // Adiciona o ID único aqui
       day: activeDay,
       month: month + 1,
       year: year,
@@ -316,15 +372,17 @@ addEventSubmit.addEventListener("click", () => {
         title: eventTitle,
         descrição: eventDescricion,
         time: `${eventTimeFrom} - ${eventTimeTo}`,
-        color: selectedColor,
-        users: selectedUsers
+        color: SelectedColor,
+        users: SelectedUsers
       }],
+      color: SelectedColor
     });
   }
+  
 
   saveEvents();
-  saveColor(selectedColor);
-  saveSelectedUsers();
+  saveColor(SelectedColor);
+  saveSelectedUsers(SelectedUsers);
 
   addEventWrapper.classList.remove("active");
   addEventDescricion.value = "";
@@ -337,72 +395,52 @@ addEventSubmit.addEventListener("click", () => {
     title: eventTitle,
     descrição: eventDescricion,
     time: `${eventTimeFrom} - ${eventTimeTo}`,
-    color: selectedColor,
-    users: selectedUsers
+    color: SelectedColor,
+    users: SelectedUsers
   });
 });
-
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Adiciona evento ao container de eventos para deletar evento
 eventsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("event")) {
-    if (confirm("Are you sure you want to delete this event?")) {
-      const eventTitle = e.target.querySelector(".event-title").innerText;
-      eventsArr.forEach((event) => {
-        if (
-          event.day === activeDay &&
-          event.month === month + 1 &&
-          event.year === year
-        ) {
-          event.events = event.events.filter(
-            (item) => item.title !== eventTitle
-          );
-          if (event.events.length === 0) {
-            eventsArr.splice(eventsArr.indexOf(event), 1);
-          }
+    const eventTitle = e.target.querySelector(".event-title").innerText;
+    eventsArr.forEach((event) => {
+      if (
+        event.day === activeDay &&
+        event.month === month + 1 &&
+        event.year === year
+      ) {
+        const selectedEvent = event.events.find(
+          (item) => item.title === eventTitle
+        );
+        if (selectedEvent) {
+          showEventModal(selectedEvent);
         }
-      });
-      updateEvents(activeDay);
-    }
+      }
+    });
   }
 });
 
-function saveEvents() {
-  localStorage.setItem("events", JSON.stringify(eventsArr));
-}
 
-function getEvents() {
-  if (localStorage.getItem("events") === null) {
-    return;
-  }
-  eventsArr.push(...JSON.parse(localStorage.getItem("events")));
-}
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para mostrar um modal de evento
 
-function saveColor(color) {
-  localStorage.setItem("selectedColor", color);
-}
+const eventModals = {};
 
-function getColor() {
-  return localStorage.getItem("selectedColor") || "#ffffff"; // retorna branco se não houver cor salva
-}
-
-function saveSelectedUsers() {
-  localStorage.setItem("selectedUsers", JSON.stringify(selectedUsers));
-}
-
-function getSelectedUsers() {
-  return JSON.parse(localStorage.getItem("selectedUsers")) || [];
-}
-
+// Função para mostrar um modal de evento
 function showEventModal(event) {
+  const colorStyle = `background-color: ${event.color}; width: 50px; height: 50px;`;
+
   const modalContent = `
     <div class="event-modal-content">
       <h2>${event.title}</h2>
       <p><strong>Descrição:</strong> ${event.descrição}</p>
       <p><strong>Tempo:</strong> ${event.time}</p>
-      <p><strong>Cor:</strong> ${event.color}</p>
+      <p><strong>Cor:</strong></p>
+      <div class="content-color" style="${colorStyle}"></div>
       <p><strong>Usuários:</strong> ${event.users.map(user => user.name).join(", ")}</p>
-    </div>
-  `;
-
+    </div>`;
+  
   const modal = document.createElement("div");
   modal.className = "event-modal";
   modal.innerHTML = modalContent;
@@ -412,12 +450,14 @@ function showEventModal(event) {
   const closeModalBtn = document.createElement("button");
   closeModalBtn.textContent = "Fechar";
   closeModalBtn.addEventListener("click", () => {
-    modal.remove();
+    modal.style.display = "none";
   });
 
   modal.appendChild(closeModalBtn);
 }
 
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para converter o formato de hora
 function convertTime(time) {
   let timeArr = time.split(":");
   let timeHour = timeArr[0];
@@ -427,10 +467,14 @@ function convertTime(time) {
   time = timeHour + ":" + timeMin + " " + timeFormat;
   return time;
 }
+
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para abrir o modal de seleção de cor
 document.addEventListener('DOMContentLoaded', function () {
-  const corEscolhida = document.querySelector('.cor_escolhida');
-  const modal = document.getElementById("modal");
-  const colorOptions = document.querySelectorAll('.color-option');
+  
+  const corEscolhida = document.querySelector('.cor_escolhida'),
+  modal = document.getElementById("modal"),
+  colorOptions = document.querySelectorAll('.color-option');
 
   corEscolhida.addEventListener('click', function (event) {
     event.stopPropagation();
@@ -441,6 +485,7 @@ document.addEventListener('DOMContentLoaded', function () {
     option.addEventListener('click', function () {
       const selectedColor = this.querySelector('span:first-child').style.backgroundColor;
       corEscolhida.style.backgroundColor = selectedColor;
+      saveColor(selectedColor);
       modal.style.display = "none";
     });
   });
@@ -451,14 +496,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Seleciona os elementos do DOM necessários para a funcionalidade de pesquisa e seleção de usuários
+
 const btConts = document.querySelector(".bt_conts");
 const modalPesPessoa = document.getElementById("modal_pes-pessoa");
 const closeModalPesPessoa = document.querySelector(".close-modal");
 const searchInput = document.getElementById("searchInput");
 const pessoasContainer = document.getElementById("pessoasContainer");
 const selectedUsersList = document.getElementById("selectedUsersList");
-
-// Users data
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Lista de todos os usuários disponíveis
 const allUsers = [
   { id: 1, name: "Ana Silva", icon: "👩" },
   { id: 2, name: "Carlos Souza", icon: "👨" },
@@ -473,41 +521,40 @@ const allUsers = [
   { id: 11, name: "Fernanda Almeida", icon: "👩" },
   { id: 12, name: "Fernanda Goias", icon: "👩" },
 ];
+//-----------------------------------------------------------------------------------------------------------------------------------//
 
-// Selected users
-const selectedUsers = [];
-
-// Event listeners
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Adiciona ouvintes de eventos aos elementos selecionados
 btConts.addEventListener("click", openModal);
 closeModalPesPessoa.addEventListener("click", closeModal);
 window.addEventListener("click", clickOutsideModal);
 searchInput.addEventListener("input", searchUsers);
-
-// Open modal
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para abrir o modal de pesquisa de pessoas
 function openModal() {
   modalPesPessoa.style.display = "block";
   listUsers("");
 }
-
-// Close modal
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para fechar o modal de pesquisa de pessoas
 function closeModal() {
   modalPesPessoa.style.display = "none";
 }
-
-// Close modal when clicking outside
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para fechar o modal ao clicar fora dele
 function clickOutsideModal(event) {
   if (event.target === modalPesPessoa) {
     closeModal();
   }
 }
-
-// Search users
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para realizar a pesquisa de usuários
 function searchUsers() {
   const searchTerm = searchInput.value.toLowerCase();
   listUsers(searchTerm);
 }
-
-// List users
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para listar usuários com base no termo de pesquisa
 function listUsers(searchTerm) {
   pessoasContainer.innerHTML = "";
   const filteredUsers = allUsers.filter(user =>
@@ -515,8 +562,8 @@ function listUsers(searchTerm) {
   );
   filteredUsers.forEach(createUserElement);
 }
-
-// Create user element
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para criar elemento de usuário
 function createUserElement(user) {
   const userDiv = document.createElement("div");
   userDiv.textContent = `${user.icon} ${user.name}`;
@@ -525,24 +572,27 @@ function createUserElement(user) {
   userDiv.addEventListener("click", () => toggleSelectUser(user, userDiv));
   pessoasContainer.appendChild(userDiv);
 }
-
-// Toggle select user
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para alternar a seleção de um usuário
 function toggleSelectUser(user, divElement) {
   const index = selectedUsers.findIndex(u => u.id === user.id);
   if (index === -1) {
     selectedUsers.push(user);
+    saveSelectedUsers(selectedUsers);
     divElement.classList.add("selected");
     addUserToSelected(user);
     addUserToWrapper(user);
   } else {
     selectedUsers.splice(index, 1);
+    saveSelectedUsers(selectedUsers);
     divElement.classList.remove("selected");
     removeUserFromSelected(user.id);
     removeUserFromWrapper(user.id);
   }
 }
-
-// Add user to selected
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Funções para adicionar e remover usuário da lista de usuários selecionados
+//adiciona
 function addUserToSelected(user) {
   const listItem = document.createElement("div");
   listItem.textContent = `${user.icon} ${user.name}`;
@@ -550,8 +600,7 @@ function addUserToSelected(user) {
   listItem.className = `mod-pess-unic-pess`;
   selectedUsersList.appendChild(listItem);
 }
-
-// Remove user from selected
+//remove
 function removeUserFromSelected(userId) {
   const listItem = document.getElementById(`user-${userId}`);
   if (listItem) {
@@ -559,7 +608,8 @@ function removeUserFromSelected(userId) {
   }
 }
 
-// Add user to wrapper
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para adicionar usuário ao container de usuários selecionados
 function addUserToWrapper(user) {
   const userDiv = document.createElement("div");
   userDiv.textContent = `${user.icon} ${user.name}`;
@@ -568,30 +618,7 @@ function addUserToWrapper(user) {
   addEventWrapper.appendChild(userDiv);
 }
 
-// Remove user from wrapper
-function removeUserFromWrapper(userId) {
-  const userDiv = document.getElementById(`wrapper-user-${userId}`);
-  if (userDiv) {
-    userDiv.remove();
-  }
-}
-
-// Função para adicionar usuário ao container
-function addUserToWrapper(user) {
-  const userDiv = document.createElement("div");
-  userDiv.innerHTML = `<span class="user-icon">${user.icon}</span> ${user.name} <span class="remove-user"></span>`;
-  userDiv.id = `wrapper-user-${user.id}`;
-  userDiv.classList.add("wrapper-user");
-
-  // Adiciona evento para remover usuário ao clicar no "×"
-  userDiv.querySelector(".remove-user").addEventListener("click", () => {
-    toggleSelectUser(user, userDiv);  // Remove o usuário da seleção
-  });
-
-  const selectedUsersContainer = document.getElementById("selectedUsersContainer");
-  selectedUsersContainer.appendChild(userDiv);
-}
-
+//-----------------------------------------------------------------------------------------------------------------------------------//
 // Função para remover usuário do container
 function removeUserFromWrapper(userId) {
   const userDiv = document.getElementById(`wrapper-user-${userId}`);
@@ -599,11 +626,22 @@ function removeUserFromWrapper(userId) {
     userDiv.remove();
   }
 }
-
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para remover usuário do container de usuários selecionados
+function removeUserFromWrapper(userId) {
+  const userDiv = document.getElementById(`wrapper-user-${userId}`);
+  if (userDiv) {
+    userDiv.remove();
+  }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------//
+//quando clicar ele vai adicionar ou remover o usuario 
 userDiv.addEventListener("click", () => {
   toggleSelectUser(user, userDiv);
-  addUserToWrapper(user);  // Adiciona o usuário ao container
+  addUserToWrapper(user);
 });
+
+// Evento para abrir confirmação de remoção ao clicar em um usuário
 document.addEventListener("DOMContentLoaded", function () {
   const wrapperUsers = document.querySelectorAll(".wrapper-user");
 
@@ -623,7 +661,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const deleteNo = confirmDelete.querySelector(".delete-no");
 
       deleteYes.addEventListener("click", function () {
-        // Remova o usuário aqui
         user.remove();
         confirmDelete.remove();
       });
@@ -634,6 +671,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
 // Função para adicionar usuário ao container
 function addUserToWrapper(user) {
   const userDiv = document.createElement("div");
@@ -650,7 +688,8 @@ function addUserToWrapper(user) {
   selectedUsersContainer.appendChild(userDiv);
 }
 
-// Função para mostrar aviso de remoção
+//-----------------------------------------------------------------------------------------------------------------------------------//
+// Função para mostrar confirmação de remoção de usuário
 function showRemoveConfirmation(user, userDiv) {
   const confirmDelete = document.createElement("div");
   confirmDelete.className = "confirm-delete";
@@ -667,13 +706,14 @@ function showRemoveConfirmation(user, userDiv) {
   const deleteYes = confirmDelete.querySelector(".delete-yes");
   const deleteNo = confirmDelete.querySelector(".delete-no");
 
+  // Evento para confirmar remoção
   deleteYes.addEventListener("click", function () {
-    // Remova o usuário aqui
     userDiv.remove();
     confirmDelete.remove();
-    toggleSelectUser(user, userDiv);  // Remove o usuário da seleção
+    toggleSelectUser(user, userDiv);
   });
 
+  // Evento para cancelar remoção
   deleteNo.addEventListener("click", function () {
     confirmDelete.remove();
   });
