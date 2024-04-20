@@ -236,14 +236,22 @@ function updateEvents(date) {
       year === event.year
     ) {
       event.events.forEach((event) => {
-        events += `<div class="event">
-            <div class="title">
-              <h3 class="event-title">${event.title}</h3>
-            </div>
-            <div class="event-time">
-              <span class="event-time">${event.time}</span>
-            </div>
-        </div>`;
+        events += `
+        <div class="event">
+	        <div class="cont-color">
+		        <div class="color-select-event"></div>
+	        </div>
+	        <div class="cont-principal">
+		        <div class="event-title"><h1>${event.title}</h1></div>
+		        <div class="event-time"><p>${event.time}</p></div>
+	        </div>
+	        <div class="left-confg">
+		        <div class="cont-config">
+              <i class="fi fi-sr-settings img-confg"></i>
+		        </div>
+	        </div>
+        </div>
+        `;
       });
     }
   });
@@ -255,6 +263,7 @@ function updateEvents(date) {
   eventsContainer.innerHTML = events;
   saveEvents();
 }
+
 
 //-----------------------------------------------------------------------------------------------------------------------------------//
 // Função para salvar os eventos no armazenamento local
@@ -726,3 +735,18 @@ function removeUserFromWrapper(userId) {
     userDiv.remove();
   }
 }
+//funão para adicionar três pontos quando o texto não cobe
+
+document.addEventListener("DOMContentLoaded", function() {
+  var eventTitles = document.querySelectorAll('.events .event .event-title h1');
+
+  eventTitles.forEach(function(title) {
+      if (title.offsetWidth < title.scrollWidth) {
+          var ellipsis = document.createElement('span');
+          ellipsis.innerText = '...';
+          ellipsis.classList.add('ellipsis');
+          title.parentNode.appendChild(ellipsis);
+      }
+  });
+});
+
