@@ -1,7 +1,7 @@
 /* usos globais */
 
 @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root {
   --primary-clr: #1C5845;
 }
@@ -429,7 +429,7 @@ body {
   border: 1px solid #888;
   width: 25%;
   border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
   top: 0;
   margin-top: 5%;
 }
@@ -889,21 +889,23 @@ body {
 .events {
   width: 100%;
   height: 100%;
-  max-height: 600px;
+  max-height: 275px;
   overflow-x: hidden;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  padding-left: 4px;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+  padding: 10px;
 }
-
+.events::-webkit-scrollbar{
+  display: none;
+}
 /* add-event:  o botão de adicionar os lembretes */
 .add-event {
   position: absolute;
-  bottom: 30px;
-  right: 30px;
+  bottom: -65px;
+  right: 10px;
   width: 40px;
   height: 40px;
   display: flex;
@@ -930,71 +932,112 @@ body {
 .events .event {
   position: relative;
   width: 100%;
-  min-height: 70px;
+  min-height: 90px;
+  max-height: 90px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 5px;
-  padding: 0 20px;
-  padding-left: 50px;
-  color: #fff;
   background-color: #236C56;
   cursor: pointer;
-  margin-bottom: 5%;
-  border-radius: 15px;
-  border: 5px solid #174738;
+  border-radius: 10px;
+  border: 4px solid #174738;
+  margin-bottom: 20px;
+  z-index: 111111111111;
 }
 
-.events .event::after {
-  content: "";
-  width: 100%;
+.events .event .cont-color {
+  position: absolute;
+  width: 15%;
   height: 100%;
-  top: 20px;
-  background-color: #174738;
-  left: 20px;
-}
-
-/* event .title:  o conteiner onde fica o titulo */
-.events .event .title {
   display: flex;
   align-items: center;
-  pointer-events: none;
-
+  justify-content: flex-start;
+ 
 }
 
-/* title .event-title:  o titulo do evento */
-.events .event .title .event-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-left: 20px;
-  margin-top: -20px;
+.events .event .color-select-event {
+  width: 50%;
+  height: 80%;
+  background-color: darkcyan;
+  border-top: 4px solid #174738;
+  border-right: 4px solid #174738;
+  border-bottom: 4px solid #174738;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
-.events .event i {
-  color: #ffffff;
-  font-size: 0.8rem;
-  left: auto;
-  margin-left: -20px;
+.events .event .cont-principal {
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  left: 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 }
 
-.events .event:hover i {
-  color: #fff;
+.events .event .event-title {
+  margin-left: 10px;
+  width: 100%;
+  margin-top: 10px;
+  overflow: hidden; 
+  position: relative;
 }
 
-/* event .event-time:  os horários que serão mostrados no evento */
+.events .event .event-title h1 {
+  color: #eee;
+  font-size: 1.4rem;
+  font-weight: 800;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+}
+
+.ellipsis {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0 5px; 
+}
 .events .event .event-time {
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: #878895;
-  margin-left: 7px;
-  pointer-events: none;
-  margin-top: -5px;
-  margin-bottom: -20px;
+  margin-left: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.events .event .event-time p{
+  color: #eee;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .15rem;
+}
+.events .event .left-confg {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  left: 75%;
 }
 
-.events .event:hover .event-time {
-  color: #fff;
+.events .event .cont-config {
+  border-radius: 0px 4px 0px 100% ;
+  background-color: #174738;
+  height: 60%;
+  width: 70%;
+  float: right;
+  display: flex;
+  align-items: start;
+  justify-content: flex-end;
 }
+
+.events .event .cont-config i{
+  width: auto;
+  color: #eee;
+  margin: 10px 15px;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+
 
 /* no-event:  quando não houver eventos */
 .events .no-event {
@@ -1013,7 +1056,169 @@ body {
   width: 250px;
   height: auto;
 }
+/* modal onde tem os dados do event */
 
+.event-modal-content{
+  width: 100vw;
+  background-color: rgba(51, 51, 51, 0.5);
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000000;
+}
+.modal-cont{
+  width: 30%;
+  height: 60%;
+  background-color: #111fdf;
+  border-radius: 25px;
+  overflow: hidden;
+}
+.cont-modal-conteiner{
+  width: 100%;
+  height: 90%;
+  background-color: var(--primary-clr);
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  background: rgb(43,120,95);
+background: linear-gradient(130deg, #236C56 0%, #1C5845 100%);
+}
+
+.content-color{
+  width: 100%;
+  height: 10%;
+  background-color: #fff;
+  top: 0;
+  border-bottom: 5px solid #E4D5C7;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.cont-conteiner-pess-time-desc{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.cont-users{
+  width: 100%;
+  height: 40%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.contt-user p{
+  background-color: #E4D5C7;
+  margin-right: 25px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: 4px solid #95877A;
+}
+.contt-user{
+  height: 75px;
+  margin-top: 20px;
+  padding: 20px;
+  display: flex;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  max-width: 100%;
+  align-items: center;
+}
+
+
+.contt-user::-webkit-scrollbar{
+  display: none;
+}
+
+.cont-users strong{
+  font-size: 1.5rem;
+  padding-left: 20px;
+  color: #fff;
+  font-weight: 600;
+}
+.cont-title{
+  width: 100%;
+  height: 75px;
+  padding: 0px 30px;
+  padding-top: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 50px;
+}
+.cont-title h2{
+  font-size: 1.8rem;
+  letter-spacing: 5px;
+  line-height: 3rem;
+  word-break: break-all;
+  color: #E4D5C7;
+}
+.cont-descrição{
+  width: 93%;
+  min-height: 50%;
+  max-height: 50%;
+  border-radius: 10px;
+  background-color: #E4D5C7;
+  border: 3px solid #95877A;
+  padding: 15px 20px;
+  overflow: hidden;
+  
+}
+.cont-descrição p{
+  font-size: 1.2rem;
+  letter-spacing: .15rem;
+  word-break: break-all;
+  font-weight: 600;
+  color: #6b6258;
+  line-height: 2em;
+  font-family: "Poppins", sans-serif;
+}
+.cont-time{
+  width: 93%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 10px;
+}
+.cont-time p{
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: .1rem;
+  color: #E4D5C7;
+}
+.close-btm{
+  left: 0;
+  position: relative;
+  margin-left: -25px;
+  width: 60px;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+}
 /* wrapper-user:  usuarios selecionados para colocar no lembrete */
 .wrapper-user {
   display: inline-flex;
