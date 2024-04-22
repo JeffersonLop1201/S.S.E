@@ -1,4 +1,12 @@
-// Constantes para os elementos HTML
+/**
+ * 
+ * Estou arrumando, está me devendo
+ * 
+ */
+
+/**
+ * Contanstes dos elementos
+ */
 const calendar = document.querySelector(".calendar"),
   date = document.querySelector(".date"),
   daysContainer = document.querySelector(".days"),
@@ -18,8 +26,10 @@ const calendar = document.querySelector(".calendar"),
   addEventTo = document.querySelector(".event-time-to"),
   addEventDescricion = document.querySelector('.event-descricao'),
   addEventSubmit = document.querySelector(".add-event-btn");
-// Lista de usuários selecionados
+
+// constante dos usuarios selecionados
 const selectedUsers = [];
+
 // Array com os nomes dos meses
 const months = [
   "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
@@ -28,6 +38,14 @@ const months = [
 
 // Array para armazenar eventos
 const eventsArr = [];
+
+// Função para obter os eventos do armazenamento local
+function getEvents() {
+  if (localStorage.getItem("events") === null) {
+    return;
+  }
+  eventsArr.push(...JSON.parse(localStorage.getItem("events")));
+}
 
 // Carrega eventos do armazenamento local
 getEvents();
@@ -38,8 +56,9 @@ let activeDay;
 let month = today.getMonth();
 let year = today.getFullYear();
 
-//-----------------------------------------------------------------------------------------------------------------------------------//
-// Função para inicializar o calendário
+/**
+ * Função para iniciar o calendário
+ */
 function initCalendar() {
   const firstDay = new Date(year, month, 1);
   const lastDay = new Date(year, month + 1, 0);
@@ -260,14 +279,6 @@ function updateEvents(date) {
 // Função para salvar os eventos no armazenamento local
 function saveEvents() {
   localStorage.setItem("events", JSON.stringify(eventsArr));
-}
-//-----------------------------------------------------------------------------------------------------------------------------------//
-// Função para obter os eventos do armazenamento local
-function getEvents() {
-  if (localStorage.getItem("events") === null) {
-    return;
-  }
-  eventsArr.push(...JSON.parse(localStorage.getItem("events")));
 }
 //-----------------------------------------------------------------------------------------------------------------------------------//
 // Função para salvar a cor selecionada
