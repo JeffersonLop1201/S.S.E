@@ -230,6 +230,7 @@ function getActiveDay(date) {
 //-----------------------------------------------------------------------------------------------------------------------------------//
 // Função para atualizar os eventos exibidos
 function updateEvents(date) {
+<<<<<<< HEAD
     let events = "";
     eventsArr.forEach((event) => {
         if (
@@ -239,6 +240,17 @@ function updateEvents(date) {
         ) {
             event.events.forEach((event) => {
                 events += `
+=======
+  let events = "";
+  eventsArr.forEach((event) => {
+    if (
+      date === event.day &&
+      month + 1 === event.month &&
+      year === event.year
+    ) {
+      event.events.forEach((event) => {
+        events += `
+>>>>>>> d91159061842c01e436667d74c747cd0fb7704a8
         <div class="event">
 	        <div class="cont-color">
 		        <div class="color-select-event"></div>
@@ -254,11 +266,19 @@ function updateEvents(date) {
 	        </div>
         </div>
         `;
+<<<<<<< HEAD
             });
         }
     });
     if (events === "") {
         events = `<div class="no-event">
+=======
+      });
+    }
+  });
+  if (events === "") {
+    events = `<div class="no-event">
+>>>>>>> d91159061842c01e436667d74c747cd0fb7704a8
                 <img src="amico.png" alt="">
         </div>`;
     }
@@ -705,6 +725,7 @@ function showRemoveConfirmation(user, userDiv) {
     });
 }
 
+<<<<<<< HEAD
 //funão para adicionar três pontos quando o texto não cobe
 document.addEventListener("DOMContentLoaded", function () {
     var eventTitles = document.querySelectorAll('.events .event .event-title h1');
@@ -718,3 +739,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+=======
+// Função para remover usuário do container
+function removeUserFromWrapper(userId) {
+  const userDiv = document.getElementById(`wrapper-user-${userId}`);
+  if (userDiv) {
+    userDiv.remove();
+  }
+}
+//funão para adicionar três pontos quando o texto não cobe
+
+document.addEventListener("DOMContentLoaded", function() {
+  var eventTitles = document.querySelectorAll('.events .event .event-title h1');
+
+  eventTitles.forEach(function(title) {
+      if (title.offsetWidth < title.scrollWidth) {
+          var ellipsis = document.createElement('span');
+          ellipsis.innerText = '...';
+          ellipsis.classList.add('ellipsis');
+          title.parentNode.appendChild(ellipsis);
+      }
+  });
+});
+
+>>>>>>> d91159061842c01e436667d74c747cd0fb7704a8

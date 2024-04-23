@@ -897,6 +897,10 @@ body {
   justify-content: start;
   align-items: center;
   padding: 10px;
+<<<<<<< HEAD
+=======
+  background-color: #111fdf;
+>>>>>>> d91159061842c01e436667d74c747cd0fb7704a8
 }
 .events::-webkit-scrollbar{
   display: none;
@@ -942,7 +946,10 @@ body {
   border-radius: 10px;
   border: 4px solid #174738;
   margin-bottom: 20px;
+<<<<<<< HEAD
   z-index: 111111111111;
+=======
+>>>>>>> d91159061842c01e436667d74c747cd0fb7704a8
 }
 
 .events .event .cont-color {
@@ -952,18 +959,31 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+<<<<<<< HEAD
  
 }
 
 .events .event .color-select-event {
   width: 50%;
+=======
+  
+}
+
+.events .event .color-select-event {
+  width: 60%;
+>>>>>>> d91159061842c01e436667d74c747cd0fb7704a8
   height: 80%;
   background-color: darkcyan;
   border-top: 4px solid #174738;
   border-right: 4px solid #174738;
   border-bottom: 4px solid #174738;
+<<<<<<< HEAD
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+=======
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+>>>>>>> d91159061842c01e436667d74c747cd0fb7704a8
 }
 
 .events .event .cont-principal {
@@ -998,6 +1018,10 @@ body {
   position: absolute;
   bottom: 0;
   right: 0;
+<<<<<<< HEAD
+=======
+  background: white; 
+>>>>>>> d91159061842c01e436667d74c747cd0fb7704a8
   padding: 0 5px; 
 }
 .events .event .event-time {
@@ -1034,7 +1058,10 @@ body {
   color: #eee;
   margin: 10px 15px;
   font-size: 20px;
+<<<<<<< HEAD
   font-family: "Poppins", sans-serif;
+=======
+>>>>>>> d91159061842c01e436667d74c747cd0fb7704a8
 }
 
 
