@@ -149,7 +149,7 @@ function updateEvents(date) {
     });
     if (events === "") {
         events = `<div class="no-event">
-                <img src="amico.png" alt="">
+                <img src="img/amico.png" alt="">
         </div>`;
     }
     eventsContainer.innerHTML = events;

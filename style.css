@@ -45,13 +45,109 @@ body {
   height: 100vh;
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   z-index: 10000;
   top: 0;
   left: 0;
 }
 
+
+.head{
+  width: 100%;
+  height: 100px;
+  top: 0;
+  left: 0;
+  border-bottom: 3px solid rgba(228, 213, 199, 0.20);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-cont{
+  width: 225px;
+  height: 100%;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-cont h1{
+  color: var(--primary-clr);
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.section-user{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 30%;
+  height: 100%;
+}
+
+.user-rota{
+  font-size: 1.4rem;
+  letter-spacing: .25rem;
+  font-weight: 600;
+  color: #222;
+  position: relative;
+  cursor: pointer;
+}
+.user-rota::after{
+  content: '';
+  width: 0%;
+  height: 5px;
+  border-radius: 3px;
+  background-color: var(--primary-clr);
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  transition: .5s ease-in-out;
+}
+.user-rota:hover::after{
+  content: '';
+  width: 80%;
+  height: 5px;
+  border-radius: 3px;
+  background-color: var(--primary-clr);
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  transition: .5s ease-in-out;
+}
+.calendar-rotas{
+  font-size: 1.4rem;
+  letter-spacing: .25rem;
+  font-weight: 600;
+  color: #222;
+  position: relative;
+  cursor: pointer;
+}
+
+.calendar-rotas::after{
+  content: '';
+  width: 0%;
+  height: 5px;
+  border-radius: 3px;
+  background-color: var(--primary-clr);
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  transition: .5s ease-in-out;
+}
+.calendar-rotas:hover::after{
+  content: '';
+  width: 80%;
+  height: 5px;
+  border-radius: 3px;
+  background-color: var(--primary-clr);
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  transition: .5s ease-in-out;
+}
 /* add-event-wrapper: usado como modal principal para colocar dados de lembretes  */
 .add-event-wrapper {
   position: absolute;
@@ -226,6 +322,7 @@ body {
   margin-bottom: 15px;
   padding: 6px;
 }
+
 
 /* input-cor: input onde irá guardar as cores  */
 .input-cor {
@@ -619,6 +716,7 @@ body {
   border-left: 3px solid rgba(228, 213, 199, 0.20);
 }
 
+
 /* left:  a parte de cima do container onde fica o calendario */
 .left {
   width: 100%;
@@ -897,10 +995,6 @@ body {
   justify-content: start;
   align-items: center;
   padding: 10px;
-<<<<<<< HEAD
-=======
-  background-color: #111fdf;
->>>>>>> d91159061842c01e436667d74c747cd0fb7704a8
 }
 .events::-webkit-scrollbar{
   display: none;
@@ -946,10 +1040,7 @@ body {
   border-radius: 10px;
   border: 4px solid #174738;
   margin-bottom: 20px;
-<<<<<<< HEAD
   z-index: 111111111111;
-=======
->>>>>>> d91159061842c01e436667d74c747cd0fb7704a8
 }
 
 .events .event .cont-color {
@@ -959,31 +1050,25 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-<<<<<<< HEAD
  
 }
 
 .events .event .color-select-event {
   width: 50%;
-=======
   
 }
 
 .events .event .color-select-event {
   width: 60%;
->>>>>>> d91159061842c01e436667d74c747cd0fb7704a8
   height: 80%;
   background-color: darkcyan;
   border-top: 4px solid #174738;
   border-right: 4px solid #174738;
   border-bottom: 4px solid #174738;
-<<<<<<< HEAD
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-=======
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
->>>>>>> d91159061842c01e436667d74c747cd0fb7704a8
 }
 
 .events .event .cont-principal {
@@ -1018,10 +1103,7 @@ body {
   position: absolute;
   bottom: 0;
   right: 0;
-<<<<<<< HEAD
-=======
   background: white; 
->>>>>>> d91159061842c01e436667d74c747cd0fb7704a8
   padding: 0 5px; 
 }
 .events .event .event-time {
@@ -1058,10 +1140,7 @@ body {
   color: #eee;
   margin: 10px 15px;
   font-size: 20px;
-<<<<<<< HEAD
   font-family: "Poppins", sans-serif;
-=======
->>>>>>> d91159061842c01e436667d74c747cd0fb7704a8
 }
 
 
@@ -1075,7 +1154,6 @@ body {
   justify-content: center;
   font-size: 1.5rem;
   font-weight: 500;
-  color: #111fdf;
 }
 
 /* no-event img:  img que vc aparecer quando não tiver evento */
@@ -1100,7 +1178,6 @@ body {
 .modal-cont{
   width: 30%;
   height: 60%;
-  background-color: #111fdf;
   border-radius: 25px;
   overflow: hidden;
 }
