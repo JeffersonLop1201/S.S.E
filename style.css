@@ -39,6 +39,63 @@ body {
   overflow: hidden;
 }
 
+.micro-interacoes{
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+}
+
+.poligon1{
+  position: absolute;
+  width: 15rem;
+  top: -100px;
+  left: -100px;
+  float: left;
+  transform: rotate(20deg);
+}
+.poligon2{
+  position: absolute;
+  width: 20rem;
+  bottom: 50px;
+  right: -30px;
+  float: right;
+  transform: rotate(40deg);
+
+}
+.poligon3{
+  position: absolute;
+  width: 15rem;
+  top: 150px;
+  left: 500px;
+  float: left;
+  transform: rotate(75deg);
+
+}
+.poligon4{
+  position: absolute;
+  width: 30rem;
+  right: 600px;
+  float: right;
+  bottom: -175px;
+  transform: rotate(100deg);
+
+}
+.poligon5{
+  position: absolute;
+  width: 25rem;
+  float: left;
+  bottom: -175px;
+  left: -50px;  
+  transform: rotate(50deg);
+}
+.poligon6{
+  position: absolute;
+  width: 25rem;
+  right: 350px;
+  float: right;
+  top: -100px;
+}
+
 /* cont: usado como conteiner da parte esquerda  */
 .cont {
   width: 80%;
