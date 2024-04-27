@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+    margin: 0;
+    font-family: "Bruno Ace", sans-serif;
+}
+.main-login{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1C5845;
+}
+.cont-all{
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 30px;
+}
+.left-login{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.left-login > h1{
+    font-size: 2vw;
+    letter-spacing: 3px;
+    color: #1C5845;
+}
+.left-login .logo{
+    position: absolute;
+    width: 5vw;
+    left: 50px;
+    top: 20px;
+}
+
+.left-login .icon-login{
+    width: 30vw;
+}
+.right-login{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-login{
+    position: relative;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background-color: #1C5845;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #00000056;
+    max-height: 60%;
+    min-height: 60%;
+
+}
+.card-login > h1{
+    color: #fff;
+    font-weight: 800;
+    font-size: 3rem;
+    margin: 0;
+    top: 50px;
+    position: absolute;
+}
+.textfield{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px 0px;
+}
+.textfield > input{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #ffffff;
+    color: #1C5845;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+.textfield > label{
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+}
+.textfield > input::placeholder{
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: #1C5845;
+}
+.btn-login{
+    width: 86.5%;
+    padding: 16px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #1C5845;
+    background-color: #fff;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #1C584552;
+    position: absolute;
+    bottom: 20px;
+}
