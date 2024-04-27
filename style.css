@@ -2,6 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
   --primary-clr: #1C5845;
 }
@@ -39,13 +40,13 @@ body {
   overflow: hidden;
 }
 
-.micro-interacoes{
+.micro-interacoes {
   position: absolute;
   width: 100vw;
   height: 100%;
 }
 
-.poligon1{
+.poligon1 {
   position: absolute;
   width: 15rem;
   top: -100px;
@@ -53,7 +54,8 @@ body {
   float: left;
   transform: rotate(20deg);
 }
-.poligon2{
+
+.poligon2 {
   position: absolute;
   width: 20rem;
   bottom: 50px;
@@ -62,7 +64,8 @@ body {
   transform: rotate(40deg);
 
 }
-.poligon3{
+
+.poligon3 {
   position: absolute;
   width: 15rem;
   top: 150px;
@@ -71,7 +74,8 @@ body {
   transform: rotate(75deg);
 
 }
-.poligon4{
+
+.poligon4 {
   position: absolute;
   width: 30rem;
   right: 600px;
@@ -80,15 +84,17 @@ body {
   transform: rotate(100deg);
 
 }
-.poligon5{
+
+.poligon5 {
   position: absolute;
   width: 25rem;
   float: left;
   bottom: -175px;
-  left: -50px;  
+  left: -50px;
   transform: rotate(50deg);
 }
-.poligon6{
+
+.poligon6 {
   position: absolute;
   width: 25rem;
   right: 350px;
@@ -110,7 +116,7 @@ body {
 }
 
 
-.head{
+.head {
   width: 100%;
   height: 100px;
   top: 0;
@@ -121,7 +127,7 @@ body {
   justify-content: space-between;
 }
 
-.logo-cont{
+.logo-cont {
   width: 225px;
   height: 100%;
   margin-left: 20px;
@@ -130,13 +136,13 @@ body {
   justify-content: space-between;
 }
 
-.logo-cont h1{
+.logo-cont h1 {
   color: var(--primary-clr);
   font-size: 2rem;
   font-weight: bolder;
 }
 
-.section-user{
+.section-user {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -144,7 +150,7 @@ body {
   height: 100%;
 }
 
-.user-rota{
+.user-rota {
   font-size: 1.4rem;
   letter-spacing: .25rem;
   font-weight: 600;
@@ -152,7 +158,8 @@ body {
   position: relative;
   cursor: pointer;
 }
-.user-rota::after{
+
+.user-rota::after {
   content: '';
   width: 0%;
   height: 5px;
@@ -163,7 +170,8 @@ body {
   bottom: -7px;
   transition: .5s ease-in-out;
 }
-.user-rota:hover::after{
+
+.user-rota:hover::after {
   content: '';
   width: 80%;
   height: 5px;
@@ -175,7 +183,7 @@ body {
   transition: .5s ease-in-out;
 }
 
-.cont-btm{
+.cont-btm {
   width: 100%;
   height: 90px;
   position: absolute;
@@ -184,27 +192,30 @@ body {
   align-items: center;
   justify-content: flex-start;
 }
-.btm-unic{
-  width: 300px;
-  margin-left: 50px;
-  height: 100%;
-}
-.btm-group{
+
+.btm-unic {
   width: 300px;
   margin-left: 50px;
   height: 100%;
 }
 
-.ef_traz-btm{
+.btm-group {
+  width: 300px;
+  margin-left: 50px;
+  height: 100%;
+}
+
+.ef_traz-btm {
   width: 100%;
   height: 80px;
   background-color: #174738;
   position: relative;
   border-radius: 20px;
   bottom: -10px;
+  z-index: -21;
 }
 
-.cont-btm .btm-1{
+.cont-btm .btm-1 {
   position: relative;
   background-color: var(--primary-clr);
   width: 100%;
@@ -219,25 +230,80 @@ body {
   border-radius: 20px;
 }
 
-.cont-btm .btm-1:active{
+.cont-btm .btm-1:active {
   transform: translateY(10px);
 }
 
-.cont-btm .btm-1 h3{
+.cont-btm .btm-1 h3 {
   color: #fff;
   font-size: 1.4rem;
   letter-spacing: .5rem;
 }
 
 
-.cont-btm .btm-1 img{
+.cont-btm .btm-1 img {
   height: 60%;
+}
+
+
+.cont-btm .btm-2 {
+  position: relative;
+  background-color: var(--primary-clr);
+  width: 100%;
+  height: 80px;
+  border: 5px solid #174738;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: .1s ease-in-out;
+  top: -80px;
+  padding: 0 20px;
+  border-radius: 20px;
+}
+
+.cont-btm .btm-2:active {
+  transform: translateY(10px);
+}
+
+.cont-btm .btm-2 h3 {
+  color: #fff;
+  font-size: 1.4rem;
+  letter-spacing: .5rem;
+}
+
+
+.cont-btm .btm-2 img {
+  height: 60%;
+}
+
+.conteiner-user-unic {
+  position: absolute;
+  background-color: #dba634;
+  width: 90%;
+  bottom: -70%;
+  left: 50px;
+  height: 70%;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  transition: bottom 0.5s linear; 
+}
+
+.conteiner-user-group {
+  background-color: #e73cbc;
+  position: absolute;
+  width: 90%;
+  bottom: 0;
+  left: 50px;
+  height: 70%;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  transition: bottom .5s linear;
 }
 
 
 
 
-.calendar-rotas{
+.calendar-rotas {
   font-size: 1.4rem;
   letter-spacing: .25rem;
   font-weight: 600;
@@ -246,7 +312,7 @@ body {
   cursor: pointer;
 }
 
-.calendar-rotas::after{
+.calendar-rotas::after {
   content: '';
   width: 0%;
   height: 5px;
@@ -257,7 +323,8 @@ body {
   bottom: -7px;
   transition: .5s ease-in-out;
 }
-.calendar-rotas:hover::after{
+
+.calendar-rotas:hover::after {
   content: '';
   width: 80%;
   height: 5px;
@@ -268,6 +335,7 @@ body {
   bottom: -7px;
   transition: .5s ease-in-out;
 }
+
 /* add-event-wrapper: usado como modal principal para colocar dados de lembretes  */
 .add-event-wrapper {
   position: absolute;
@@ -924,6 +992,7 @@ body {
   clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%);
   z-index: 50;
 }
+
 .calendar .days:not(.today) .active {
   background-color: var(--primary-clr) !important;
 }
@@ -1116,9 +1185,11 @@ body {
   align-items: center;
   padding: 10px;
 }
-.events::-webkit-scrollbar{
+
+.events::-webkit-scrollbar {
   display: none;
 }
+
 /* add-event:  o botão de adicionar os lembretes */
 .add-event {
   position: absolute;
@@ -1170,12 +1241,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
- 
+
 }
 
 .events .event .color-select-event {
   width: 50%;
-  
+
 }
 
 .events .event .color-select-event {
@@ -1206,7 +1277,7 @@ body {
   margin-left: 10px;
   width: 100%;
   margin-top: 10px;
-  overflow: hidden; 
+  overflow: hidden;
   position: relative;
 }
 
@@ -1214,8 +1285,8 @@ body {
   color: #eee;
   font-size: 1.4rem;
   font-weight: 800;
-  white-space: nowrap; 
-  overflow: hidden; 
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
@@ -1223,20 +1294,23 @@ body {
   position: absolute;
   bottom: 0;
   right: 0;
-  background: white; 
-  padding: 0 5px; 
+  background: white;
+  padding: 0 5px;
 }
+
 .events .event .event-time {
   margin-left: 10px;
   width: 100%;
   margin-bottom: 10px;
 }
-.events .event .event-time p{
+
+.events .event .event-time p {
   color: #eee;
   font-size: .8rem;
   font-weight: 700;
   letter-spacing: .15rem;
 }
+
 .events .event .left-confg {
   position: absolute;
   width: 25%;
@@ -1245,7 +1319,7 @@ body {
 }
 
 .events .event .cont-config {
-  border-radius: 0px 4px 0px 100% ;
+  border-radius: 0px 4px 0px 100%;
   background-color: #174738;
   height: 60%;
   width: 70%;
@@ -1255,7 +1329,7 @@ body {
   justify-content: flex-end;
 }
 
-.events .event .cont-config i{
+.events .event .cont-config i {
   width: auto;
   color: #eee;
   margin: 10px 15px;
@@ -1281,9 +1355,10 @@ body {
   width: 250px;
   height: auto;
 }
+
 /* modal onde tem os dados do event */
 
-.event-modal-content{
+.event-modal-content {
   width: 100vw;
   background-color: rgba(51, 51, 51, 0.5);
   height: 100%;
@@ -1295,13 +1370,15 @@ body {
   justify-content: center;
   z-index: 10000000;
 }
-.modal-cont{
+
+.modal-cont {
   width: 30%;
   height: 60%;
   border-radius: 25px;
   overflow: hidden;
 }
-.cont-modal-conteiner{
+
+.cont-modal-conteiner {
   width: 100%;
   height: 90%;
   background-color: var(--primary-clr);
@@ -1310,11 +1387,11 @@ body {
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  background: rgb(43,120,95);
-background: linear-gradient(130deg, #236C56 0%, #1C5845 100%);
+  background: rgb(43, 120, 95);
+  background: linear-gradient(130deg, #236C56 0%, #1C5845 100%);
 }
 
-.content-color{
+.content-color {
   width: 100%;
   height: 10%;
   background-color: #fff;
@@ -1324,7 +1401,8 @@ background: linear-gradient(130deg, #236C56 0%, #1C5845 100%);
   align-items: center;
   justify-content: flex-end;
 }
-.cont-conteiner-pess-time-desc{
+
+.cont-conteiner-pess-time-desc {
   width: 100%;
   height: 80%;
   display: flex;
@@ -1332,7 +1410,8 @@ background: linear-gradient(130deg, #236C56 0%, #1C5845 100%);
   justify-content: flex-start;
   flex-direction: column;
 }
-.cont-users{
+
+.cont-users {
   width: 100%;
   height: 40%;
   display: flex;
@@ -1340,7 +1419,8 @@ background: linear-gradient(130deg, #236C56 0%, #1C5845 100%);
   justify-content: flex-start;
   flex-direction: column;
 }
-.contt-user p{
+
+.contt-user p {
   background-color: #E4D5C7;
   margin-right: 25px;
   height: 50px;
@@ -1352,7 +1432,8 @@ background: linear-gradient(130deg, #236C56 0%, #1C5845 100%);
   border-radius: 15px;
   border: 4px solid #95877A;
 }
-.contt-user{
+
+.contt-user {
   height: 75px;
   margin-top: 20px;
   padding: 20px;
@@ -1368,17 +1449,18 @@ background: linear-gradient(130deg, #236C56 0%, #1C5845 100%);
 }
 
 
-.contt-user::-webkit-scrollbar{
+.contt-user::-webkit-scrollbar {
   display: none;
 }
 
-.cont-users strong{
+.cont-users strong {
   font-size: 1.5rem;
   padding-left: 20px;
   color: #fff;
   font-weight: 600;
 }
-.cont-title{
+
+.cont-title {
   width: 100%;
   height: 75px;
   padding: 0px 30px;
@@ -1388,14 +1470,16 @@ background: linear-gradient(130deg, #236C56 0%, #1C5845 100%);
   justify-content: flex-start;
   margin-bottom: 50px;
 }
-.cont-title h2{
+
+.cont-title h2 {
   font-size: 1.8rem;
   letter-spacing: 5px;
   line-height: 3rem;
   word-break: break-all;
   color: #E4D5C7;
 }
-.cont-descrição{
+
+.cont-descrição {
   width: 93%;
   min-height: 50%;
   max-height: 50%;
@@ -1404,9 +1488,10 @@ background: linear-gradient(130deg, #236C56 0%, #1C5845 100%);
   border: 3px solid #95877A;
   padding: 15px 20px;
   overflow: hidden;
-  
+
 }
-.cont-descrição p{
+
+.cont-descrição p {
   font-size: 1.2rem;
   letter-spacing: .15rem;
   word-break: break-all;
@@ -1415,19 +1500,22 @@ background: linear-gradient(130deg, #236C56 0%, #1C5845 100%);
   line-height: 2em;
   font-family: "Poppins", sans-serif;
 }
-.cont-time{
+
+.cont-time {
   width: 93%;
   display: flex;
   justify-content: flex-end;
   padding: 10px 10px;
 }
-.cont-time p{
+
+.cont-time p {
   font-size: 16px;
   font-weight: bold;
   letter-spacing: .1rem;
   color: #E4D5C7;
 }
-.close-btm{
+
+.close-btm {
   left: 0;
   position: relative;
   margin-left: -25px;
@@ -1443,6 +1531,7 @@ background: linear-gradient(130deg, #236C56 0%, #1C5845 100%);
   color: #fff;
   cursor: pointer;
 }
+
 /* wrapper-user:  usuarios selecionados para colocar no lembrete */
 .wrapper-user {
   display: inline-flex;

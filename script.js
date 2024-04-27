@@ -759,3 +759,25 @@ userDiv.addEventListener("click", () => {
     toggleSelectUser(user, userDiv);
     addUserToWrapper(user);
 });
+
+
+
+function showUnic() {
+    console.log("Botão indivíduo clicado");
+    const containerUnic = document.querySelector('.conteiner-user-unic');
+    const containerGroup = document.querySelector('.conteiner-user-group');
+    containerUnic.style.bottom = '0';
+    containerGroup.style.bottom = '-70%';
+    containerUnic.style.zIndex = '12'; 
+    containerGroup.style.zIndex = '10'; 
+}
+
+function showGroup() {
+    console.log("Botão grupo clicado");
+    const containerUnic = document.querySelector('.conteiner-user-unic');
+    const containerGroup = document.querySelector('.conteiner-user-group');
+    containerGroup.style.bottom = '0';
+    containerUnic.style.bottom = '-70%';
+    containerUnic.style.zIndex = '10'; 
+    containerGroup.style.zIndex = '12'; 
+}
