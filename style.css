@@ -36,7 +36,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background-color: #ffffff;
   overflow: hidden;
 }
 
@@ -119,18 +118,19 @@ body {
 .head {
   width: 100%;
   height: 100px;
-  top: 0;
   left: 0;
   border-bottom: 3px solid rgba(228, 213, 199, 0.20);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  top: 0;
+  margin-top: -20px;
 }
 
 .logo-cont {
-  width: 225px;
+  width: 200px;
   height: 100%;
-  margin-left: 20px;
+  margin-left: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -140,6 +140,10 @@ body {
   color: var(--primary-clr);
   font-size: 2rem;
   font-weight: bolder;
+}
+
+.logo-cont img{
+  height: 80%;
 }
 
 .section-user {
@@ -278,14 +282,14 @@ body {
 
 .conteiner-user-unic {
   position: absolute;
-  background-color: #E4D5C7;
+  background-color: #174738;
   width: 90%;
   bottom: -70%;
   left: 50px;
   height: 70%;
   border-top-left-radius: 60px;
   border-top-right-radius: 60px;
-  transition: bottom 0.5s linear; 
+  transition: bottom 0.5s ease-in-out; 
 }
 
 .conteiner-user-group {
@@ -297,11 +301,45 @@ body {
   height: 70%;
   border-top-left-radius: 60px;
   border-top-right-radius: 60px;
-  transition: bottom .5s linear;
+  transition: bottom .5s ease-in-out;
+}
+.cont-all-user{
+  position: relative;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  height: 50px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20px;
+}
+.cont-user-login{
+  background-color: #1C5845;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
-
-
+.cont-user-login a{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.cont-user-login a img{
+  height: 80%;
+  width: 80%;
+}
 
 .calendar-rotas {
   font-size: 1.4rem;
@@ -352,11 +390,15 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  z-index: 100000000000000000000000000000;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
 }
 
 /* add-event-wrapper.active: quando o modal é aberto  */
 .add-event-wrapper.active {
-  max-height: 70%;
+  max-height: 80%;
   transition: max-height 1s ease;
 }
 
@@ -705,6 +747,7 @@ body {
   height: auto;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000000000000000;
 }
 
 .modal-content {
@@ -750,7 +793,7 @@ body {
   max-height: 100vh;
   min-height: 100vh;
   overflow: hidden;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
 }
@@ -828,11 +871,10 @@ body {
   flex-direction: column;
   width: 100%;
   justify-content: start;
+  height: 100px;
 }
 
-.mod-pess-user-cont::-webkit-scrollbar {
-  display: none;
-}
+
 
 .mod-pess-strong {
   padding-top: 15px;
@@ -857,7 +899,8 @@ body {
 }
 
 .mod-pess-list::-webkit-scrollbar {
-  display: none;
+  width: 10px;
+  position: absolute;
 }
 
 /* mod-pess-user-unit:  colocado para armazenar dados do usuario existentes dentro do modal de pesquisa */
@@ -908,20 +951,21 @@ body {
 /* left:  a parte de cima do container onde fica o calendario */
 .left {
   width: 100%;
-  padding: 20px;
+  padding: 10px;
+  padding-top: 0;
 }
 
 /* calendar:  calendario */
 .calendar {
   position: relative;
-  width: 335px;
+  width: 100%;
   height: 500px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   color: #878895;
+  top: 0;
   border-radius: 5px;
-  margin-top: 50px;
 }
 
 /* month: mês */
@@ -982,7 +1026,6 @@ body {
   padding: 0 20px;
   font-size: 1.1rem;
   font-weight: 500;
-  margin-bottom: 10px;
 }
 
 .calendar .days .active {
@@ -1142,7 +1185,7 @@ body {
 .container .right {
   position: relative;
   width: 100%;
-  min-height: 350px;
+  min-height: 100px;
   transform: translateY(-75px);
 }
 
@@ -1176,14 +1219,15 @@ body {
 .events {
   width: 100%;
   height: 100%;
-  max-height: 275px;
+  max-height: 250px;
   overflow-x: hidden;
   overflow-y: auto;
+  margin-top: -20px;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  padding: 10px;
+  padding:0 10px;
 }
 
 .events::-webkit-scrollbar {
@@ -1221,8 +1265,8 @@ body {
 .events .event {
   position: relative;
   width: 100%;
-  min-height: 90px;
-  max-height: 90px;
+  min-height: 80px;
+  max-height: 80px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -1230,7 +1274,7 @@ body {
   cursor: pointer;
   border-radius: 10px;
   border: 4px solid #174738;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   z-index: 111111111111;
 }
 
@@ -1258,8 +1302,8 @@ body {
   border-bottom: 4px solid #174738;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .events .event .cont-principal {
@@ -1321,8 +1365,8 @@ body {
 .events .event .cont-config {
   border-radius: 0px 4px 0px 100%;
   background-color: #174738;
-  height: 60%;
-  width: 70%;
+  height: 60px;
+  width: 60px;
   float: right;
   display: flex;
   align-items: start;
@@ -1332,8 +1376,8 @@ body {
 .events .event .cont-config i {
   width: auto;
   color: #eee;
-  margin: 10px 15px;
-  font-size: 20px;
+  margin: 10px 10px;
+  font-size: 26px;
   font-family: "Poppins", sans-serif;
 }
 
