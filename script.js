@@ -50,21 +50,134 @@ const btConts = document.querySelector(".bt_conts"),
     pessoasContainer = document.getElementById("pessoasContainer"),
     selectedUsersList = document.getElementById("selectedUsersList");
 
-// Lista de todos os usuários disponíveis
-const allUsers = [
-    { id: 1, name: "Ana Silva", icon: "👩" },
-    { id: 2, name: "Carlos Souza", icon: "👨" },
-    { id: 3, name: "Bruna Oliveira", icon: "👩" },
-    { id: 4, name: "Diego Costa", icon: "👨" },
-    { id: 5, name: "Fernanda Almeida", icon: "👩" },
-    { id: 6, name: "Fernanda Goias", icon: "👩" },
-    { id: 7, name: "Ana Silva", icon: "👩" },
-    { id: 8, name: "Carlos Souza", icon: "👨" },
-    { id: 9, name: "Bruna Oliveira", icon: "👩" },
-    { id: 10, name: "Diego Costa", icon: "👨" },
-    { id: 11, name: "Fernanda Almeida", icon: "👩" },
-    { id: 12, name: "Fernanda Goias", icon: "👩" },
-];
+
+let allUsers = [];
+
+// Função para abrir o modal de adição de usuário
+function openAddModal() {
+  const modal = document.querySelector(".addmodal");
+  modal.style.display = "block";
+}
+
+// Função para fechar o modal de adição de usuário
+function closeAddModal() {
+  const modal = document.querySelector(".addmodal");
+  modal.style.display = "none";
+}
+
+// Evento para abrir o modal de adição de usuário quando o botão é clicado
+document.getElementById("add-user-btn").addEventListener("click", openAddModal);
+
+// Evento para fechar o modal de adição de usuário quando o usuário clica no botão de fechar (X)
+document.querySelector(".addmodal-close").addEventListener("click", closeAddModal);
+
+// Evento para fechar o modal de adição de usuário quando o usuário clica fora da área do modal
+window.addEventListener("click", function (event) {
+  const modal = document.querySelector(".addmodal");
+  if (event.target == modal) {
+    closeAddModal();
+  }
+});
+
+// Função para salvar os usuários no localStorage
+function saveUsers() {
+  localStorage.setItem("allUsers", JSON.stringify(allUsers));
+}
+
+// Função para carregar os usuários do localStorage
+function loadUsers() {
+  const storedUsers = localStorage.getItem("allUsers");
+  if (storedUsers) {
+    allUsers = JSON.parse(storedUsers);
+  }
+}
+
+// Carregar os usuários quando a página é carregada
+window.addEventListener("DOMContentLoaded", loadUsers);
+
+// Evento para cadastrar novo usuário
+document.getElementById("add-user-form").addEventListener("submit", function (event) {
+  event.preventDefault();
+  const userName = document.getElementById("add-user-name").value;
+  const userEmail = document.getElementById("add-user-email").value;
+  const userPhone = document.getElementById("add-user-phone").value;
+  const userIcon = document.getElementById("add-user-icon").value;
+
+  // Adicione os dados do novo usuário ao array allUsers
+  const newUser = {
+    id: allUsers.length + 1,
+    name: userName,
+    email: userEmail,
+    phone: userPhone,
+    icon: userIcon,
+  };
+  allUsers.push(newUser);
+  console.log("Novo usuário cadastrado:", newUser);
+  closeAddModal();
+  // Atualize a lista de usuários no add-user
+  saveUsers(); // Salva os usuários no localStorage
+  fillAddUserList(); // Atualiza a lista de usuários na página
+});
+
+
+function filterUsers() {
+  const searchInput = document.getElementById("searchInputUser").value.trim().toLowerCase(); // Obtém o valor do campo de pesquisa e converte para minúsculas
+
+  // Verifica se o campo de pesquisa está vazio
+  if (searchInput === "") {
+    fillAddUserList(allUsers); // Se estiver vazio, preenche a lista com todos os usuários
+    return; // Retorna para evitar a filtragem adicional
+  }
+
+  // Filtra os usuários cujos nomes contêm o texto de pesquisa
+  const filteredUsers = allUsers.filter(user => user.name.toLowerCase().includes(searchInput));
+
+  fillAddUserList(filteredUsers); // Preenche a lista de usuários filtrados
+}
+
+// Função para carregar os usuários do localStorage
+function loadUsers() {
+    const storedUsers = localStorage.getItem("allUsers");
+    if (storedUsers) {
+      allUsers = JSON.parse(storedUsers);
+    }
+    // Preencher a lista de usuários com todos os usuários ao carregar a página
+    fillAddUserList(allUsers);
+  }
+  
+  // Carregar os usuários quando a página é carregada
+  window.addEventListener("DOMContentLoaded", loadUsers);
+  
+
+// Evento de input para a barra de pesquisa
+document.getElementById("searchInputUser").addEventListener("input", filterUsers);
+
+
+// Função para preencher a lista de usuários no add-user
+function fillAddUserList(users = allUsers) {
+  const addUserList = document.getElementById("add-user");
+
+  // Limpa a lista antes de adicionar novos usuários
+  addUserList.innerHTML = "";
+
+  // Cria uma lista não ordenada (ul) para os usuários
+  const userList = document.createElement("ul");
+
+  // Adiciona cada usuário como um item de lista (li)
+  users.forEach(user => {
+    const listItem = document.createElement("li");
+    listItem.textContent = `${user.icon} ${user.name}`;
+    listItem.classList.add("user-item");
+    listItem.addEventListener("click", () => toggleSelectUser(user, listItem)); // Adiciona evento de clique para selecionar/deselecionar usuário
+    userList.appendChild(listItem); // Adiciona o item de lista à lista de usuários
+  });
+
+  // Adiciona a lista de usuários ao elemento add-user
+  addUserList.appendChild(userList);
+}
+
+// Chama a função para preencher a lista de usuários no add-user quando a página carrega
+window.addEventListener("DOMContentLoaded", fillAddUserList);
 
 
 //------------------------------------------------------------------------------------------------//

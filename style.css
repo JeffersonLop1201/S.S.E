@@ -124,7 +124,6 @@ body {
   align-items: center;
   justify-content: space-between;
   top: 0;
-  margin-top: -20px;
 }
 
 .logo-cont {
@@ -279,10 +278,10 @@ body {
 .cont-btm .btm-2 img {
   height: 60%;
 }
-
+/* Estilos para o container de usuários */
 .conteiner-user-unic {
   position: absolute;
-  background-color: #174738;
+  background-color: var(--primary-clr); /* Cor de fundo definida pela variável */
   width: 90%;
   bottom: -70%;
   left: 50px;
@@ -292,8 +291,9 @@ body {
   transition: bottom 0.5s ease-in-out; 
 }
 
+/* Estilos para o container de grupo de usuários */
 .conteiner-user-group {
-  background-color: #e73cbc;
+  background-color: #e73cbc; /* Cor de fundo rosa */
   position: absolute;
   width: 90%;
   bottom: 0;
@@ -303,7 +303,9 @@ body {
   border-top-right-radius: 60px;
   transition: bottom .5s ease-in-out;
 }
-.cont-all-user{
+
+/* Estilos para o ícone de usuário */
+.cont-all-user {
   position: relative;
   left: 0;
   top: 0;
@@ -315,8 +317,10 @@ body {
   justify-content: flex-end;
   padding: 20px;
 }
-.cont-user-login{
-  background-color: #1C5845;
+
+/* Estilos para o ícone de usuário de login */
+.cont-user-login {
+  background-color: var(--primary-clr); /* Cor de fundo definida pela variável */
   left: 0;
   top: 0;
   z-index: 100;
@@ -327,6 +331,193 @@ body {
   justify-content: center;
   border-radius: 50%;
 }
+
+/* Estilos para o container de adição de usuário */
+.cont-add-user {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+/* Estilos para a barra de pesquisa de usuário */
+.pesquisa-user {
+  width: 90%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  left: 0;
+  top: 0;
+  margin-top: 40px;
+}
+
+/* Estilos para o input de pesquisa de usuário */
+.pess-input-user {
+  background-color: #fff; /* Cor de fundo branca */
+  width: 80%;
+  height: 100%;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 30px;
+  outline: none;
+  font-size: 20px;
+  text-transform: capitalize;
+  color: #1C5845; /* Cor do texto */
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* Estilos para o placeholder do input de pesquisa de usuário */
+.pess-input-user::placeholder {
+  color: hsla(161, 52%, 23%, 0.5); /* Cor do placeholder */
+} 
+
+/* Estilos para o botão de adicionar usuário */
+.btn-unic-pess {
+  background-color: #fff; /* Cor de fundo branca */
+  border: none;
+  height: 100%;
+  width: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-unic-pess i {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5em;
+  color: var(--primary-clr); 
+}
+.add-user {
+  background-color: #fff; 
+  margin-bottom: 80px;
+  padding: 20px; 
+  border-radius: 10px; 
+  min-width: 90%;
+  overflow-y: auto; /* Alterado para auto para adicionar scroll vertical */
+  max-height: 300px; /* Defina um valor apropriado para max-height */
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  min-height: 400px;
+}
+.user-item {
+  margin-bottom: 15px;
+  text-decoration: none;
+  list-style-type: none;
+  padding-bottom: 15px;
+  border-bottom: 3px solid var(--primary-clr);
+}
+
+/* Remover a borda inferior do último item */
+.user-item:last-child {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  border-bottom: none;
+}
+
+.add-user::-webkit-scrollbar {
+  width: 10px; 
+}
+
+.add-user::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+.add-user::-webkit-scrollbar-thumb {
+  background: var(--primary-clr); /* cor do botão da barra de rolagem */
+  border-radius: 0; 
+}
+
+.add-user::-webkit-scrollbar-thumb:hover {
+  background: #174738; /* cor do botão da barra de rolagem ao passar o mouse */
+}
+
+
+
+.addmodal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 111111111111111111111111111111;
+}
+
+.addmodal-content {
+  background-color: #fefefe; 
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+.addmodal-close {
+  color: #aaa; 
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.addmodal-close:hover,
+.addmodal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.addmodal-content h2 {
+  margin-top: 0;
+}
+
+/* Estilos para o input de texto no modal */
+.addmodal-content input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Estilos para o botão de submit no modal */
+.btn-submit {
+  background-color: #007bff; /* Cor de fundo azul */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: #0056b3; /* Cor de fundo azul mais escura */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .cont-user-login a{
   height: 100%;
@@ -936,7 +1127,7 @@ body {
 .container {
   position: relative;
   width: 20vw;
-  min-height: 850px;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 5px;
   color: #fff;
@@ -945,6 +1136,7 @@ body {
   border-radius: 10px;
   flex-direction: column;
   border-left: 3px solid rgba(228, 213, 199, 0.20);
+  padding-top: 50px;
 }
 
 
@@ -1185,8 +1377,7 @@ body {
 .container .right {
   position: relative;
   width: 100%;
-  min-height: 100px;
-  transform: translateY(-75px);
+  min-height: 300px;
 }
 
 .right .today-date {
@@ -1392,6 +1583,7 @@ body {
   justify-content: center;
   font-size: 1.5rem;
   font-weight: 500;
+  margin-top: 10px;
 }
 
 /* no-event img:  img que vc aparecer quando não tiver evento */
