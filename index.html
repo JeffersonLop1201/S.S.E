@@ -226,11 +226,57 @@
           <option value="👨">👨</option>
           <option value="👧">👧</option>
           <option value="🧑">🧑</option>
+          <option value="🧒">🧒</option>
+          <option value="👨">👨</option>
+          <option value="🧔">🧔</option>
+          <option value="👨‍🦱">👨‍🦱</option>
+          <option value="👱">👱</option>
+          <option value="👱‍♀️">👱‍♀️</option>
         </select>
         <button type="submit" class="btn-submit">Adicionar</button>
       </form>
     </div>
   </div>
+  <!-- Modal -->
+<div id="myModal" class="modal-cont-user">
+    <div class="modal-content">
+      <!-- Barra de Navegação -->
+      <div class="navbar">
+        <a href="#" class="nav-item active" data-target="dados">Dados</a>
+        <a href="#" class="nav-item" data-target="carteirinha">Carteirinha</a>
+        <a href="#" class="nav-item" data-target="chat">Chat</a>
+        <a href="#" class="nav-item" data-target="responsavel">Responsável</a>
+        <span class="close-modal">&times;</span> <!-- Botão para fechar o modal -->
+      </div>
+      <!-- Tela de Dados do Usuário -->
+      <div class="modal-screen active cont-modal-user-dados" id="dados">
+        <h2>Dados do Usuário</h2>
+        <p>Nome: João Silva</p>
+        <p>Email: joao@example.com</p>
+        <!-- Adicione mais informações do usuário conforme necessário -->
+      </div>
+      <!-- Tela de Carteirinha do Usuário -->
+      <div class="modal-screen cont-modal-user-carteirinha" id="carteirinha">
+        <h2>Carteirinha do Usuário</h2>
+        <img src="carteirinha.jpg" alt="Carteirinha do Usuário">
+        <!-- Adicione a visualização da carteirinha do usuário -->
+      </div>
+      <!-- Tela de Chat com o Usuário -->
+      <div class="modal-screen cont-modal-user-chat" id="chat">
+        <h2>Chat com o Usuário</h2>
+        <!-- Adicione a interface de chat -->
+        <textarea placeholder="Digite sua mensagem..."></textarea>
+        <button>Enviar</button>
+      </div>
+      <!-- Tela de Responsável pelo Usuário -->
+      <div class="modal-screen cont-modal-user-responsavel" id="responsavel">
+        <h2>Responsável pelo Usuário</h2>
+        <p>Nome: Maria Silva</p>
+        <p>Email: maria@example.com</p>
+        <!-- Adicione mais informações do responsável conforme necessário -->
+      </div>
+    </div>
+</div>
   
         
          

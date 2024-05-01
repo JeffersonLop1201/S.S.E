@@ -128,3 +128,8 @@ body{
     position: absolute;
     bottom: 20px;
 }
+
+.btn-login a{
+    color: #1C5845;
+    text-decoration: none;
+}
