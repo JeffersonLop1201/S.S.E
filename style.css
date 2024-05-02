@@ -293,7 +293,7 @@ body {
 
 /* Estilos para o container de grupo de usuários */
 .conteiner-user-group {
-  background-color: #e73cbc; /* Cor de fundo rosa */
+  background-color: var(--primary-clr); /* Cor de fundo rosa */
   position: absolute;
   width: 90%;
   bottom: 0;
@@ -525,11 +525,13 @@ body {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 0px;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
 }
-
+.modal-cont-user.active{
+  height: 100%;
+}
 .modal-cont-user .modal-content {
   background-color: #fefefe;
   margin: 10% auto;
