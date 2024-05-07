@@ -513,108 +513,82 @@ body {
 }
 
 
-
-
-
-
-/* Estilos do Modal */
-.modal-cont-user {
-  display: flex;
-  position: fixed;
-  z-index: 99999999999999999999999999999999;
+.modal-cont-user{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  z-index: 111111111111111111111111111111111111;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 0px;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.modal-cont-user.active{
-  height: 100%;
-}
-.modal-cont-user .modal-content {
-  background-color: #fefefe;
-  margin: 10% auto;
-  padding: 20px;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 600px;
+
+.modal-content-user{
   position: relative;
+  width: 80% ;
+  height: 90%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+  overflow: hidden; 
 }
 
-.modal-cont-user .modal-content .navbar {
-  overflow: hidden;
-  background-color: #333;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+.desc-user-inform{
+  background-color: blueviolet;
+  width: 100%;
+  height: 150px;
 }
 
-.modal-cont-user .modal-content .nav-item {
-  float: left;
-  cursor: pointer;
-  padding: 14px 16px;
-  color: #f2f2f2;
-  text-align: center;
-  text-decoration: none;
-  font-size: 17px;
-}
 
-.modal-cont-user .modal-content .nav-item.active {
-  background-color: #ddd;
-  color: #333;
-}
-
-.modal-cont-user .modal-content .nav-item .close-modal {
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: #f2f2f2;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.modal-cont-user .modal-content .modal-screen {
-  display: none;
-  padding: 20px;
-}
-
-.modal-cont-user .modal-content .modal-screen.active {
-  display: block;
-}
-
-.cont-modal-user-chat textarea {
+.navbar{
   width: 100%;
   height: 100px;
-  padding: 10px;
-  margin-top: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  border-bottom: 3px solid rgba(228, 213, 199, 0.4);
 }
 
-.cont-modal-user-chat button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  cursor: pointer;
-  margin-top: 10px;
+.nav-item{
+  color: #424242;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+.nav-item.active{
+  color: var(--primary-clr);
 }
 
-.cont-modal-user-chat button:hover {
-  background-color: #0056b3;
+.modal-screen{
+  width: 100%;
+  height: calc(100% - 250px);
+  z-index: 10111111;
 }
 
+.modal-screen.active{
+  position: absolute;
+  top: 250px;
+}
 
+.cont-modal-user-dados{
+  background-color: blue;
+}
+.cont-modal-user-carteirinha{
+  background-color: yellow;
+}
 
+.cont-modal-user-chat{
+  background-color: red;
+}
 
-
-
-
-
-
+.cont-modal-user-responsavel{
+  background-color: green;
+}
 
 
 

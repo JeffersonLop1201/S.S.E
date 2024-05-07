@@ -894,56 +894,36 @@ function showGroup() {
     containerUnic.style.zIndex = '10'; 
     containerGroup.style.zIndex = '12'; 
 }
+function toggleActive(className) {
+    const activeBtn = document.querySelector('.nav-item.active');
+    const currentBtn = document.querySelector(`.nav-item.${className}`);
 
-
-
-// Função para abrir o modal
-function openCustomModal() {
-    const modal = document.getElementById("myModal");
-    modal.style.display = "block";
-}
-
-// Função para fechar o modal
-function closeCustomModal() {
-    const modal = document.getElementById("myModal");
-    modal.style.display = "none";
-}
-
-// Evento para fechar o modal quando o usuário clica no botão de fechar (X)
-document.querySelector(".close-modal").addEventListener("click", closeCustomModal);
-
-// Evento para fechar o modal quando o usuário clica fora da área do modal
-window.addEventListener("click", function(event) {
-    const modal = document.getElementById("myModal");
-    if (event.target == modal) {
-        closeCustomModal();
+    // Remove a classe 'active' do botão atualmente ativo
+    if (activeBtn) {
+        activeBtn.classList.remove('active');
     }
-});
 
-// Evento para alternar entre as telas do modal
-document.querySelectorAll(".nav-item").forEach(item => {
-    item.addEventListener("click", function() {
-        const target = this.getAttribute("data-target");
-        document.querySelectorAll(".modal-screen").forEach(screen => {
-            if (screen.id === target) {
-                screen.classList.add("active");
-            } else {
-                screen.classList.remove("active");
-            }
-        });
-        document.querySelectorAll(".nav-item").forEach(navItem => {
-            navItem.classList.remove("active");
-        });
-        this.classList.add("active");
+    // Adiciona a classe 'active' ao botão clicado
+    currentBtn.classList.add('active');
+
+    // Remove a classe 'active' de todos os modais
+    document.querySelectorAll('.modal-screen').forEach(modal => {
+        modal.classList.remove('active');
     });
-});
 
-// Evento para abrir o modal quando o botão é clicado
-document.getElementById("openModalBtn").addEventListener("click", openCustomModal);
+    // Adiciona a classe 'active' ao modal correspondente
+    const modalToShow = document.querySelector(`.cont-modal-user-${className}`);
+    modalToShow.classList.add('active');
+}
 
-// Evento para abrir o modal quando o usuário clica no .user-item
-document.querySelectorAll(".user-item").forEach(item => {
-    item.addEventListener("click", function() {
-        openCustomModal();
+// Função para alternar a classe 'active' para elementos com a classe 'modal-screen'
+function toggleModalActive(modalId) {
+    // Remove a classe 'active' de todos os modais
+    document.querySelectorAll('.modal-screen').forEach(modal => {
+        modal.classList.remove('active');
     });
-});
+
+    // Adiciona a classe 'active' ao modal clicado
+    const modalToShow = document.getElementById(modalId);
+    modalToShow.classList.add('active');
+}
