@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.3.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
 </head>
 
 <body>
@@ -91,7 +92,7 @@
         </div>
 
         <!-- Modal para seleção de cor -->
-        <div id="modal" class="modal" >
+        <div id="modal" class="modal">
             <div class="modal-content">
                 <h2>Selecione uma cor</h2>
                 <ul class="color-list">
@@ -129,7 +130,8 @@
         <div id="modal_pes-pessoa" class="modal mod-pess">
             <div class="modal-content mod-pess-cont">
                 <div class="mod-pess-cont-header">
-                    <input type="text" id="searchInput" class="mod-pess-input" placeholder="Pesquisar pessoa..." autocomplete="on">
+                    <input type="text" id="searchInput" class="mod-pess-input" placeholder="Pesquisar pessoa..."
+                        autocomplete="on">
                     <span class="close-modal mod-pess-close">&times;</span>
                 </div>
                 <div id="pessoasContainer" class="mod-pess-card"></div>
@@ -137,7 +139,7 @@
                     <strong class="mod-pess-strong">Selecionados:</strong>
                     <ul id="selectedUsersList" class="mod-pess-list"></ul>
                 </div>
-                
+
             </div>
         </div>
 
@@ -150,17 +152,17 @@
                 <div class="user-rota">Usuários</div>
                 <div class="calendar-rotas">Horários</div>
             </div>
-            <div class="cont-all-user">            
+            <div class="cont-all-user">
                 <div class="cont-user-login">
                     <a href="index3.html">
                         <img src="img/circle-user.png" alt="">
                     </a>
-                    
+
                 </div>
             </div>
         </div>
 
-        
+
         <div class="cont-btm">
             <div class="btm-unic">
                 <div class="ef_traz-btm"></div>
@@ -172,20 +174,21 @@
             <div class="btm-group">
                 <div class="ef_traz-btm"></div>
                 <button type="button" class="btm-2" onclick="showGroup()">
-                    <img src="img/Group 4650.png" alt="" >
+                    <img src="img/Group 4650.png" alt="">
                     <h3>Grupo</h3>
                 </button>
             </div>
         </div>
-        
 
-        
+
+
 
         <div class="container-user">
             <div class="conteiner-user-unic">
                 <div class="cont-add-user">
                     <div class="pesquisa-user">
-                        <input type="text" id="searchInputUser" class="pess-input-user" placeholder="Pesquisar Pessoa..." autocomplete="on">
+                        <input type="text" id="searchInputUser" class="pess-input-user"
+                            placeholder="Pesquisar Pessoa..." autocomplete="on">
                         <button id="add-user-btn" class="btn-unic-pess">
                             <i class="fi fi-br-add"></i>
                         </button>
@@ -197,11 +200,12 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="conteiner-user-group">
                 <div class="cont-add-group cont-add-user">
                     <div class="pesquisa-group pesquisa-user">
-                        <input type="text" id="searchInputGroup" class="pess-input-group pess-input-user" placeholder="Pesquisar Grupos..." autocomplete="on">
+                        <input type="text" id="searchInputGroup" class="pess-input-group pess-input-user"
+                            placeholder="Pesquisar Grupos..." autocomplete="on">
                         <button class="btn-unic-group btn-unic-pess">
                             <i class="fi fi-br-add"></i>
                         </button>
@@ -217,84 +221,107 @@
         </div>
 
         <!-- Modal de Adição de Usuário -->
-<div id="addmodal" class="addmodal">
-    <div class="addmodal-content">
-      <span class="addmodal-close">&times;</span>
-      <h2>Adicionar Usuário</h2>
-      <form id="add-user-form">
-        <input type="text" id="add-user-name" placeholder="Nome do usuário" required>
-        <input type="email" id="add-user-email" placeholder="E-mail do usuário" required>
-        <input type="tel" id="add-user-phone" placeholder="Telefone do usuário" required>
-        <select id="add-user-icon">
-          <option value="👤">👤</option>
-          <option value="👩">👩</option>
-          <option value="👨">👨</option>
-          <option value="👧">👧</option>
-          <option value="🧑">🧑</option>
-          <option value="🧒">🧒</option>
-          <option value="👨">👨</option>
-          <option value="🧔">🧔</option>
-          <option value="👨‍🦱">👨‍🦱</option>
-          <option value="👱">👱</option>
-          <option value="👱‍♀️">👱‍♀️</option>
-        </select>
-        <button type="submit" class="btn-submit">Adicionar</button>
-      </form>
-    </div>
-  </div>
-  <!-- Modal -->
-  <div id="myModal" class="modal-cont-user">
-    <div class="modal-content-user">
-        <!-- Barra de Navegação -->
-        <div class="desc-user-inform">
-            
+        <div id="addmodal" class="addmodal">
+            <div class="addmodal-content">
+                <span class="addmodal-close">&times;</span>
+                <h2>Adicionar Usuário</h2>
+                <form id="add-user-form">
+                    <input type="text" id="add-user-name" placeholder="Nome do usuário" required>
+                    <input type="email" id="add-user-email" placeholder="E-mail do usuário" required>
+                    <input type="tel" id="add-user-phone" placeholder="Telefone do usuário" required>
+                    <select id="add-user-icon">
+                        <option value="👤">👤</option>
+                        <option value="👩">👩</option>
+                        <option value="👨">👨</option>
+                        <option value="👧">👧</option>
+                        <option value="🧑">🧑</option>
+                        <option value="🧒">🧒</option>
+                        <option value="👨">👨</option>
+                        <option value="🧔">🧔</option>
+                        <option value="👨‍🦱">👨‍🦱</option>
+                        <option value="👱">👱</option>
+                        <option value="👱‍♀️">👱‍♀️</option>
+                    </select>
+                    <button type="submit" class="btn-submit">Adicionar</button>
+                </form>
+            </div>
         </div>
-        
-        <div class="navbar">
-            <a href="#" class="nav-item" id="btn-dados" onclick="toggleModalActive('dados'); toggleNavActive('btn-dados')">Dados</a>
-            <a href="#" class="nav-item" id="btn-carteirinha" onclick="toggleModalActive('carteirinha'); toggleNavActive('btn-carteirinha')">Carteirinha</a>
-            <a href="#" class="nav-item" id="btn-chat" onclick="toggleModalActive('chat'); toggleNavActive('btn-chat')">Chat</a>   
-            <a href="#" class="nav-item" id="btn-responsavel" onclick="toggleModalActive('responsavel'); toggleNavActive('btn-responsavel')">Responsável</a>
-            <div class="line"></div>
-        </div>
-        <div class="modal-screen active cont-modal-inicio" id="inicio">
+        <!-- Modal -->
+        <div id="myModal" class="modal-cont-user">
+            <div class="modal-content-user">
+                <!-- Barra de Navegação -->
+                <div class="desc-user-inform">
 
+                </div>
+
+                <div class="navbar">
+                    <a href="#" class="nav-item" id="btn-dados"
+                        onclick="toggleModalActive('dados'); toggleNavActive('btn-dados')">Dados</a>
+                    <a href="#" class="nav-item" id="btn-carteirinha"
+                        onclick="toggleModalActive('carteirinha'); toggleNavActive('btn-carteirinha')">Carteirinha</a>
+                    <a href="#" class="nav-item" id="btn-chat"
+                        onclick="toggleModalActive('chat'); toggleNavActive('btn-chat')">Chat</a>
+                    <a href="#" class="nav-item" id="btn-responsavel"
+                        onclick="toggleModalActive('responsavel'); toggleNavActive('btn-responsavel')">Responsável</a>
+                    <div class="line"></div>
+                </div>
+                <div class="modal-screen active cont-modal-inicio" id="inicio">
+
+                </div>
+                <div class="modal-screen cont-modal-user-dados" id="dados">
+
+                </div>
+                <div class="modal-screen cont-modal-user-carteirinha" id="carteirinha">
+
+                </div>
+                <!-- chat -->
+                <div class="modal-screen cont-modal-user-chat" id="chat">
+                    <div class="chat-box">
+                        <div class="messagesContainer" id="messagesContainer">
+                            <div class="messages" id="messages"></div>
+                        </div>
+                        <form onsubmit="sendMessage(event)">
+                            <div class="container-input">
+                                <input type="text" id="user-input" autofocus placeholder="Digite sua mensagem..." />
+                                <button type="submit" class="submit-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="43" height="27" viewBox="0 0 43 27"
+                                        fill="none" class="svg">
+                                        <path
+                                            d="M23.2609 13.8432L7.10756 15.52C6.92185 15.5393 6.74757 15.5888 6.60225 15.6633C6.45694 15.7379 6.3457 15.835 6.27974 15.9449L0.710122 25.2416C0.178252 26.0967 1.61301 26.9117 2.92982 26.5002L41.5332 14.4752C41.8 14.3919 42.0244 14.2639 42.1812 14.1057C42.338 13.9475 42.421 13.7652 42.421 13.5793C42.421 13.3934 42.338 13.2111 42.1812 13.0529C42.0244 12.8947 41.8 12.7668 41.5332 12.6834L2.92982 0.658414C1.61301 0.248227 0.178252 1.06326 0.710122 1.91703L6.28188 11.2137C6.34785 11.3236 6.45908 11.4207 6.6044 11.4953C6.74972 11.5699 6.924 11.6193 7.10971 11.6386L23.2631 13.3154C23.3639 13.3254 23.4556 13.3575 23.5218 13.4059C23.588 13.4542 23.6244 13.5157 23.6244 13.5793C23.6244 13.6429 23.588 13.7044 23.5218 13.7527C23.4556 13.8011 23.3639 13.8332 23.2631 13.8432H23.2609Z"
+                                            fill="white" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- fim chat -->
+                <div class="modal-screen cont-modal-user-responsavel" id="responsavel">
+
+                </div>
+            </div>
         </div>
-        <div class="modal-screen cont-modal-user-dados" id="dados">
-           
-        </div>
-        <div class="modal-screen cont-modal-user-carteirinha" id="carteirinha">
-            
-        </div>
-        <div class="modal-screen cont-modal-user-chat" id="chat">
-           
-        </div>
-        <div class="modal-screen cont-modal-user-responsavel" id="responsavel">
-            
-        </div>
-    </div>
-</div>
 
 
 
-        
-         
-          
+
+
+
 
     </div>
 
 
     <!-- Container principal para o calendário -->
     <div class="container">
-        
+
         <!-- Lado esquerdo: calendário -->
         <div class="left">
-            
+
             <div class="calendar">
                 <!-- Cabeçalho do mês -->
                 <div class="month">
                     <i class="fas fa-angle-left prev"></i>
-                     <div class="date">dezembro 2015</div><!-- não tem nada com essa div no css -->
+                    <div class="date">dezembro 2015</div><!-- não tem nada com essa div no css -->
                     <i class="fas fa-angle-right next"></i>
                 </div>
                 <!-- Dias da semana -->
