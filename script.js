@@ -95,6 +95,44 @@ function loadUsers() {
 // Carregar os usuários quando a página é carregada
 window.addEventListener("DOMContentLoaded", loadUsers);
 
+
+// Função para preencher a lista de usuários no add-user
+// Função para preencher a lista de usuários no add-user
+function fillAddUserList(users = allUsers) {
+    const addUserList = document.getElementById("add-user");
+  
+    // Limpa a lista antes de adicionar novos usuários
+    addUserList.innerHTML = "";
+  
+    // Cria uma lista não ordenada (ul) para os usuários
+    const userList = document.createElement("ul");
+  
+    // Adiciona cada usuário como um item de lista (li)
+    users.forEach(user => {
+      const listItem = document.createElement("li");
+      listItem.textContent = `${user.icon} ${user.name}`;
+      listItem.classList.add("user-item");
+      listItem.addEventListener("click", () => {
+        // Aqui vamos chamar a função toggleSelectUser e passar o usuário e o elemento clicado
+        toggleSelectUser(user, listItem);
+        // Ao clicar em um usuário, preencha a div com a classe 'desc-user-inform' com o ícone e o nome do usuário clicado
+        const descUserInform = document.querySelector(".desc-user-inform");
+        descUserInform.innerHTML = `
+          <i class="user-icon-modal">${user.icon}</i>
+          <span class="user-name">${user.name}</span>
+          <span class="close-modal" onclick="closeUserModal('myModal')">&times;</span>
+        `;
+      });
+      userList.appendChild(listItem); // Adiciona o item de lista à lista de usuários
+    });
+  
+    // Adiciona a lista de usuários ao elemento add-user
+    addUserList.appendChild(userList);
+  }
+  
+  // Preenche a lista de usuários ao carregar a página
+  fillAddUserList();
+  
 // Evento para cadastrar novo usuário
 document.getElementById("add-user-form").addEventListener("submit", function (event) {
   event.preventDefault();
@@ -153,31 +191,7 @@ function loadUsers() {
 document.getElementById("searchInputUser").addEventListener("input", filterUsers);
 
 
-// Função para preencher a lista de usuários no add-user
-function fillAddUserList(users = allUsers) {
-  const addUserList = document.getElementById("add-user");
 
-  // Limpa a lista antes de adicionar novos usuários
-  addUserList.innerHTML = "";
-
-  // Cria uma lista não ordenada (ul) para os usuários
-  const userList = document.createElement("ul");
-
-  // Adiciona cada usuário como um item de lista (li)
-  users.forEach(user => {
-    const listItem = document.createElement("li");
-    listItem.textContent = `${user.icon} ${user.name}`;
-    listItem.classList.add("user-item");
-    listItem.addEventListener("click", () => toggleSelectUser(user, listItem)); // Adiciona evento de clique para selecionar/deselecionar usuário
-    userList.appendChild(listItem); // Adiciona o item de lista à lista de usuários
-  });
-
-  // Adiciona a lista de usuários ao elemento add-user
-  addUserList.appendChild(userList);
-}
-
-// Chama a função para preencher a lista de usuários no add-user quando a página carrega
-window.addEventListener("DOMContentLoaded", fillAddUserList);
 
 
 //------------------------------------------------------------------------------------------------//
@@ -528,20 +542,48 @@ function removeUserFromSelected(userId) {
 // Função para alternar a seleção de um usuário
 function toggleSelectUser(user, divElement) {
     const index = selectedUsers.findIndex(u => u.id === user.id);
+    const myModal = document.getElementById("myModal");
     if (index === -1) {
         selectedUsers.push(user);
         saveSelectedUsers(selectedUsers);
         divElement.classList.add("selected");
+        myModal.style.display = "flex";
         addUserToSelected(user);
         addUserToWrapper(user);
     } else {
         selectedUsers.splice(index, 1);
         saveSelectedUsers(selectedUsers);
         divElement.classList.remove("selected");
+        myModal.style.display = "none";
         removeUserFromSelected(user.id);
         removeUserFromWrapper(user.id);
     }
 }
+
+// Função para fechar o modal
+function closeUserModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Função para fechar o modal quando clicar fora do conteúdo do modal
+function closeModalOnOutsideClick() {
+    const modal = document.getElementById("myModal");
+    if (modal) {
+        modal.addEventListener("click", function(event) {
+            // Verifica se o clique ocorreu dentro do conteúdo do modal
+            if (!event.target.closest(".modal-content-user")) {
+                modal.style.display = "none"; // Fecha o modal
+            }
+        });
+    }
+}
+
+// Chama a função para fechar o modal ao clicar fora do conteúdo do modal
+closeModalOnOutsideClick();
+
 
 // Função para remover usuário do container
 function removeUserFromWrapper(userId) {
@@ -894,36 +936,65 @@ function showGroup() {
     containerUnic.style.zIndex = '10'; 
     containerGroup.style.zIndex = '12'; 
 }
-function toggleActive(className) {
-    const activeBtn = document.querySelector('.nav-item.active');
-    const currentBtn = document.querySelector(`.nav-item.${className}`);
 
-    // Remove a classe 'active' do botão atualmente ativo
-    if (activeBtn) {
-        activeBtn.classList.remove('active');
-    }
 
-    // Adiciona a classe 'active' ao botão clicado
-    currentBtn.classList.add('active');
 
-    // Remove a classe 'active' de todos os modais
-    document.querySelectorAll('.modal-screen').forEach(modal => {
-        modal.classList.remove('active');
-    });
 
-    // Adiciona a classe 'active' ao modal correspondente
-    const modalToShow = document.querySelector(`.cont-modal-user-${className}`);
-    modalToShow.classList.add('active');
-}
 
-// Função para alternar a classe 'active' para elementos com a classe 'modal-screen'
+
+
 function toggleModalActive(modalId) {
     // Remove a classe 'active' de todos os modais
     document.querySelectorAll('.modal-screen').forEach(modal => {
         modal.classList.remove('active');
     });
 
-    // Adiciona a classe 'active' ao modal clicado
+    // Adiciona a classe 'active' ao modal correspondente
     const modalToShow = document.getElementById(modalId);
     modalToShow.classList.add('active');
+
+    // Atualiza a classe 'active' nos botões de navegação
+    toggleNavActive(modalId);
 }
+
+function toggleNavActive(navItemId) {
+    // Remove a classe 'active' de todos os botões de navegação
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+    });
+
+    // Adiciona a classe 'active' ao botão de navegação correspondente ao ID passado como argumento
+    const currentBtn = document.getElementById(`btn-${navItemId}`);
+    if (currentBtn) {
+        currentBtn.classList.add('active');
+        // Atualiza a posição da linha
+        updateLinePosition(currentBtn);
+    }
+}
+
+// Função para atualizar a posição da linha de acordo com o botão selecionado
+function updateLinePosition(selectedNavItem) {
+    const line = document.querySelector('.line');
+    const navItem = selectedNavItem.getBoundingClientRect();
+    const navbar = document.querySelector('.navbar').getBoundingClientRect();
+
+    line.style.width = navItem.width + 'px';
+    line.style.left = (navItem.left - navbar.left) + 'px';
+}
+
+// Seleciona todos os nav-items e adiciona um ouvinte de evento a cada um
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', function() {
+        const modalId = this.getAttribute('data-target');
+        toggleModalActive(modalId);
+    });
+});
+
+// Atualiza a posição da linha ao carregar a página
+window.addEventListener('load', function() {
+    const activeNavItem = document.querySelector('.nav-item.active');
+    if (activeNavItem) {
+        updateLinePosition(activeNavItem);
+    }
+});
+

@@ -246,45 +246,35 @@
   <div id="myModal" class="modal-cont-user">
     <div class="modal-content-user">
         <!-- Barra de Navegação -->
-        <div class="desc-user-inform">
-            <span class="close-modal">&times;</span> <!-- Botão para fechar o modal -->
-        </div>
+        <div class="desc-user-inform"></div>
+        
         <div class="navbar">
-            <a href="#" class="nav-item btn-dados active" onclick="toggleActive('btn-dados')">Dados</a>
-            <a href="#" class="nav-item btm-carteirinha" onclick="toggleActive('btm-carteirinha')">Carteirinha</a>
-            <a href="#" class="nav-item btn-chat" onclick="toggleActive('btn-chat')">Chat</a>
-            <a href="#" class="nav-item btn-responsavel" onclick="toggleActive('btn-responsavel')">Responsável</a>
+            <a href="#" class="nav-item" id="btn-dados" onclick="toggleModalActive('dados'); toggleNavActive('btn-dados')">Dados</a>
+            <a href="#" class="nav-item" id="btn-carteirinha" onclick="toggleModalActive('carteirinha'); toggleNavActive('btn-carteirinha')">Carteirinha</a>
+            <a href="#" class="nav-item" id="btn-chat" onclick="toggleModalActive('chat'); toggleNavActive('btn-chat')">Chat</a>   
+            <a href="#" class="nav-item" id="btn-responsavel" onclick="toggleModalActive('responsavel'); toggleNavActive('btn-responsavel')">Responsável</a>
+            <div class="line"></div>
         </div>
-        <!-- Tela de Dados do Usuário -->
-        <div class="modal-screen active cont-modal-user-dados" id="dados" onclick="toggleModalActive('dados')">
-            <h2>Dados do Usuário</h2>
-            <p>Nome: João Silva</p>
-            <p>Email: joao@example.com</p>
-            <!-- Adicione mais informações do usuário conforme necessário -->
+        <div class="modal-screen active cont-modal-inicio" id="inicio">
+
         </div>
-        <!-- Tela de Carteirinha do Usuário -->
-        <div class="modal-screen cont-modal-user-carteirinha" id="carteirinha" onclick="toggleModalActive('carteirinha')">
-            <h2>Carteirinha do Usuário</h2>
-            <img src="carteirinha.jpg" alt="Carteirinha do Usuário">
-            <!-- Adicione a visualização da carteirinha do usuário -->
+        <div class="modal-screen cont-modal-user-dados" id="dados">
+           
         </div>
-        <!-- Tela de Chat com o Usuário -->
-        <div class="modal-screen cont-modal-user-chat" id="chat" onclick="toggleModalActive('chat')">
-            <h2>Chat com o Usuário</h2>
-            <!-- Adicione a interface de chat -->
-            <textarea placeholder="Digite sua mensagem..."></textarea>
-            <button>Enviar</button>
+        <div class="modal-screen cont-modal-user-carteirinha" id="carteirinha">
+            
         </div>
-        <!-- Tela de Responsável pelo Usuário -->
-        <div class="modal-screen cont-modal-user-responsavel" id="responsavel" onclick="toggleModalActive('responsavel')">
-            <h2>Responsável pelo Usuário</h2>
-            <p>Nome: Maria Silva</p>
-            <p>Email: maria@example.com</p>
-            <!-- Adicione mais informações do responsável conforme necessário -->
+        <div class="modal-screen cont-modal-user-chat" id="chat">
+           
+        </div>
+        <div class="modal-screen cont-modal-user-responsavel" id="responsavel">
+            
         </div>
     </div>
 </div>
-  
+
+
+
         
          
           
