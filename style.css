@@ -662,7 +662,11 @@ body {
 }
 
 .cont-user-name{
-  width: 50%;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .user-name {
