@@ -118,9 +118,21 @@ function fillAddUserList(users = allUsers) {
         // Ao clicar em um usuário, preencha a div com a classe 'desc-user-inform' com o ícone e o nome do usuário clicado
         const descUserInform = document.querySelector(".desc-user-inform");
         descUserInform.innerHTML = `
-          <i class="user-icon-modal">${user.icon}</i>
-          <span class="user-name">${user.name}</span>
-          <span class="close-modal" onclick="closeUserModal('myModal')">&times;</span>
+          <div class="cont-user-icon">
+            <div class="cont-user-icon-dentro">
+              <i class="user-icon-modal">${user.icon}</i>
+            </div>
+            <div class="cont-user-icon-traz">
+            </div>
+          </div>
+          <div class="cont-user-name">
+            <span class="user-name">${user.name}</span>
+          </div>
+          <div class="cont-close-modal">
+            <span class="close-modal" onclick="closeUserModal('myModal')">&times;</span>
+          </div>
+          
+          
         `;
       });
       userList.appendChild(listItem); // Adiciona o item de lista à lista de usuários
