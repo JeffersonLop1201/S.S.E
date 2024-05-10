@@ -810,17 +810,18 @@ body {
   padding: 0 30px;
 }
 .container-input {
-  border-radius: 10px;
-  background: rgba(32, 33, 35, 0.5);
+  border-radius: 15px;
+  background: #e8e8e8;
+  border: 5px solid #ccc;
   width: 100%;
   color: white;
-  border: none;
-  height: 40px;
+  height: 60px;
   font-size: 18px;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
 }
 .input-icon {
   position: absolute;
@@ -841,12 +842,11 @@ input {
   justify-content: flex-start;
   resize: none;
   border: none;
-  color: white;
-  font-size: 16px;
+  color: #ccc;
+  font-size: 1.5rem;
 }
 input::placeholder {
-  color: white;
-  font-size: 16px;
+  color: #ccc;
 }
 input:focus {
   outline: none;
@@ -859,12 +859,14 @@ input:focus {
   cursor: pointer;
 }
 .submit-button .svg{
-  background-color: #0056b3;
   float: right ;
   right: 0;
   padding: 0;
   margin: 0;
+  height: 50px;
+  color: #ccc;
 }
+
 .submit-button .input-icon {
   position: absolute;
   right: 10px;
